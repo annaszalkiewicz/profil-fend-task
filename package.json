@@ -7,5 +7,8 @@
     "test": "test"
   },
   "author": "Anna Szalkiewicz",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
