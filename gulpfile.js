@@ -1,6 +1,7 @@
-const gulp = require('gulp');
-const bs 	 = require('browser-sync').create();
-const sass = require('gulp-sass');
+const gulp   = require('gulp');
+const bs 	   = require('browser-sync').create();
+const sass   = require('gulp-sass');
+const concat = require('gulp-concat');
 
 function serve() {
 	bs.init({
@@ -17,6 +18,7 @@ function serve() {
 function style() {
 	return gulp.src('./scss/**/*.scss')
 		.pipe(sass())
+		.pipe(concat('styles.css'))
 		.pipe(gulp.dest('./css'))
 		.pipe(bs.stream());
 }
