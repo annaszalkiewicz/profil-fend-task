@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const bs = require('browser-sync').create();
+const bs 	 = require('browser-sync').create();
+const sass = require('gulp-sass');
 
-// Create Static server
-gulp.task('serve', function() {
+function serve() {
 	bs.init({
 		server: {
 			baseDir: './'
@@ -12,4 +12,22 @@ gulp.task('serve', function() {
 			port: 8001
 		}
 	});
-});
+}
+
+function style() {
+	return gulp.src('./scss/**/*.scss')
+		.pipe(sass())
+		.pipe(gulp.dest('./css'))
+		.pipe(bs.stream());
+}
+
+function watch() {
+	serve();
+	gulp.watch('./scss/**/*.scss', style);
+	gulp.watch('./*.html').on('change', bs.reload);
+	gulp.watch('./js/**/*.js').on('change', bs.reload);
+}
+
+exports.style = style;
+exports.watch = watch;
+exports.default = watch;

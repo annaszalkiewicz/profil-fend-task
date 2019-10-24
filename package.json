@@ -5,15 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "gulp serve"
+    "start": "gulp"
   },
   "author": "Anna Szalkiewicz",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.7",
-    "gulp": "^4.0.2"
-  },
-  "dependencies": {
+    "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2"
-  }
+  },
+  "dependencies": {}
 }
