@@ -1,6 +1,6 @@
-const gulp   = require('gulp');
-const bs 	   = require('browser-sync').create();
-const sass   = require('gulp-sass');
+const gulp = require('gulp');
+const bs = require('browser-sync').create();
+const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 
 function serve() {
@@ -16,20 +16,27 @@ function serve() {
 }
 
 function style() {
-	return gulp.src('./scss/**/*.scss')
+	return gulp
+		.src('./scss/**/*.scss')
 		.pipe(sass())
 		.pipe(concat('styles.css'))
 		.pipe(gulp.dest('./css'))
 		.pipe(bs.stream());
 }
+function scripts() {
+	return gulp
+		.src(['./js/app.mjs'])
+		.pipe(gulp.dest('./js'));
+}
 
-function watch() {
+function defaultTask() {
 	serve();
+	scripts();
 	gulp.watch('./scss/**/*.scss', style);
 	gulp.watch('./*.html').on('change', bs.reload);
-	gulp.watch('./js/**/*.js').on('change', bs.reload);
+	gulp.watch('./js/**/*.mjs').on('change', bs.reload);
 }
 
 exports.style = style;
-exports.watch = watch;
-exports.default = watch;
+exports.scripts = scripts;
+exports.default = defaultTask;
