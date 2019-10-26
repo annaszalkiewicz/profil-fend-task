@@ -1,8 +1,11 @@
 class Controller {
-	constructor() {}
+	constructor(view, model) {
+		this.view = view;
+		this.model = model;
+	}
 
-	render() {
-		console.log('Controller render');
+	init() {
+		this.view.displayYear();
 	}
 }
 
