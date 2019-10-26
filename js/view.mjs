@@ -2,7 +2,7 @@ class View {
 	constructor(value) {
 		this.value = value;
 		/* Event that listens to input change value & call updateValue method */
-		document.addEventListener('change', this.updateValue);
+		document.getElementById('name').addEventListener('change', this.updateValue);
 	}
 
 	render() {}
