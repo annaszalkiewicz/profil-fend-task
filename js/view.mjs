@@ -1,7 +1,16 @@
 class View {
-	constructor() {}
+	constructor(value) {
+		this.value = value;
+		/* Event that listens to input change value & call updateValue method */
+		document.addEventListener('change', this.updateValue);
+	}
 
 	render() {}
+
+	//Method that update input value
+	updateValue(e) {
+		this.value = e.target.value;
+	}
 
 	// Display year in the footer
 	displayYear() {
