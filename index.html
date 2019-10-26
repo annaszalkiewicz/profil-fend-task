@@ -16,7 +16,7 @@
 				</h1>
 			</header>
 			<main class="main">
-				<div class="form">
+				<form class="form" id="form">
 					<div class="form_row">
 						<label for="name" class="form_label">
 							Search your series by name
@@ -28,15 +28,15 @@
 							name="name"
 							id="name"
 							class="form_input form_input--text"
+							minlength="1"
 						/>
 						<input
 							type="submit"
 							value="Find"
 							class="form_input form_input--button"
-							disabled
 						/>
 					</div>
-				</div>
+				</form>
 				<div class="results_container" id="results">
 					Here will be displayed search results
 				</div>
