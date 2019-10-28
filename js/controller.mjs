@@ -1,5 +1,5 @@
 class Controller {
-	constructor(view, model) {
+	constructor(view, model, results) {
 		this.view = view;
 		this.model = model;
 
@@ -14,7 +14,7 @@ class Controller {
 			.addEventListener('submit', this.submitHandler);
 	}
 	/* Check if input isn't empty and submit form */
-	submitHandler(e) {
+	submitHandler = e => {
 		e.preventDefault();
 
 		const input = document.getElementById('name');
@@ -22,13 +22,15 @@ class Controller {
 		if (input.value.trim() === '') {
 			return;
 		} else {
-			console.log(this.name.value);
+			this.model.fetchSeries();
 		}
-	}
+	};
 
-	init() {
+	init = () => {
 		this.view.displayYear();
-	}
+		console.log(this.view);
+		console.log(this.model);		
+	};
 }
 
 export default Controller;
