@@ -52,8 +52,13 @@ class Controller {
 						)
 					];
 				}
+				if (this.results.length === 0) {
+					this.view.noResultsHandler();
+				}
+				else {
+					this.showResults();
+				}
 
-				this.showResults();
 			})
 			.catch(err => console.log(err));
 	};

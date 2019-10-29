@@ -72,6 +72,14 @@ class View {
 		rating.innerHTML = result.rating ? `${result.rating}` : 'No rating yet';
 	};
 
+	// Display warning message if no series found
+	noResultsHandler = () => {
+		const message = document.createElement('p');
+		message.classList.add('results_warning');
+		this.container.appendChild(message);
+		message.innerHTML = 'Sorry, no series found. Please, try to search for another one.';
+	}
+
 	// Method that update input value
 	updateValue = e => {
 		this.value = e.target.value;
