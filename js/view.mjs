@@ -1,16 +1,16 @@
 class View {
 	constructor(value) {
 		this.value = value;
+		this.container = document.getElementById('results');
 	}
 	// Method that renders search results
 	render = result => {
-		const container = document.getElementById('results');
 
 		/* Creates card container with link to page with full details */
 		const url = document.createElement('a');
 		url.setAttribute('href', `${result.url}`);
 		url.classList.add('card_container');
-		container.appendChild(url);
+		this.container.appendChild(url);
 
 		// Creates image container
 		const imageContainer = document.createElement('div');
