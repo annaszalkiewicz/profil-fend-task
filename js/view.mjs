@@ -5,7 +5,6 @@ class View {
 	}
 	// Method that renders search results
 	render = result => {
-
 		/* Creates card container with link to page with full details */
 		const url = document.createElement('a');
 		url.setAttribute('href', `${result.url}`);
@@ -40,11 +39,13 @@ class View {
 
 		/* Create series description; if no description available, display 'No description' */
 		const description = document.createElement('div');
+
 		description.classList.add('card_description');
 		details.appendChild(description);
-		description.innerHTML = result.description
-			? `${result.description}`
-			: 'No description';
+		description.innerHTML =
+			result.description
+				? result.description.substring(0, 99) + '...'
+				: 'No description available';
 
 		// Creates more container
 		const more = document.createElement('div');
@@ -56,20 +57,20 @@ class View {
 		date.classList.add('card_date');
 		more.appendChild(date);
 		date.innerHTML = result.releaseDate
-			? `${result.releaseDate}`
+			? result.releaseDate
 			: 'Unknown release date';
 
 		// Display status; if no available, display 'Unknown status'
 		const status = document.createElement('p');
 		status.classList.add('card_status');
 		more.appendChild(status);
-		status.innerHTML = result.status ? `${result.status}` : 'Unknown status';
+		status.innerHTML = result.status ? result.status : 'Unknown status';
 
 		// Display rating; if no available, display 'No rating yet'
 		const rating = document.createElement('p');
 		rating.classList.add('card_rating');
 		more.appendChild(rating);
-		rating.innerHTML = result.rating ? `${result.rating}` : 'No rating yet';
+		rating.innerHTML = result.rating ? result.rating : 'No rating yet';
 	};
 
 	// Display warning message if no series found
@@ -77,8 +78,9 @@ class View {
 		const message = document.createElement('p');
 		message.classList.add('results_warning');
 		this.container.appendChild(message);
-		message.innerHTML = 'Sorry, no series found. Please, try to search for another one.';
-	}
+		message.innerHTML =
+			'Sorry, no series found. Please, try to search for another one.';
+	};
 
 	// Method that update input value
 	updateValue = e => {
