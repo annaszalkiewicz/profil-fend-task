@@ -116,6 +116,17 @@ class View {
 		this.results.sort((a, b) => Number(b.rating) - Number(a.rating));
 	};
 
+	/* Method that sorts series by release from newest to oldest. First it converts release date to Date, parse date to miliseconds and compare numbers */
+
+	sortByReleaseDate = () => {
+		this.results.sort((a, b) => {
+			const dateA = new Date(a.releaseDate);
+			const dateB = new Date(b.releaseDate);
+
+			return Date.parse(dateB) - Date.parse(dateA);
+		});
+	};
+
 	// Method that update input value
 	updateValue = e => {
 		this.value = e.target.value;
