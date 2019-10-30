@@ -1,8 +1,11 @@
 class View {
-	constructor(value) {
+	constructor(model, value) {
+		this.model = model;
 		this.value = value;
+		this.results = [];
 		this.container = document.getElementById('results');
 	}
+
 	// Method that renders search results
 	render = result => {
 		/* Creates card container with link to page with full details */
@@ -42,10 +45,9 @@ class View {
 
 		description.classList.add('card_description');
 		details.appendChild(description);
-		description.innerHTML =
-			result.description
-				? result.description.substring(0, 99) + '...'
-				: 'No description available';
+		description.innerHTML = result.description
+			? result.description.substring(0, 99) + '...'
+			: 'No description available';
 
 		// Creates more container
 		const more = document.createElement('div');
@@ -73,6 +75,15 @@ class View {
 		rating.innerHTML = result.rating ? result.rating : 'No rating yet';
 	};
 
+	// Display all series from results array
+	showResults = () => {
+		// Clear all results children if exist
+		this.clearResults();
+
+		// And re-render all results
+		this.results.map(result => this.render(result));
+	};
+
 	// Display warning message if no series found
 	noResultsHandler = () => {
 		const message = document.createElement('p');
@@ -80,6 +91,10 @@ class View {
 		this.container.appendChild(message);
 		message.innerHTML =
 			'Sorry, no series found. Please, try to search for another one.';
+	};
+
+	clearResults = () => {
+		this.container.innerHTML = '';
 	};
 
 	// Method that update input value
@@ -92,11 +107,6 @@ class View {
 		const d = new Date();
 		return (document.getElementById('footer_date').innerHTML = d.getFullYear());
 	};
-
-	sortChangeHandler = () => {
-		console.log('Changed value');
-		
-	}
 }
 
 export default View;

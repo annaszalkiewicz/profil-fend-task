@@ -4,7 +4,7 @@ class Controller {
 	constructor(view, model) {
 		this.view = view;
 		this.model = model;
-		this.results = [];
+		this.sort = document.getElementById('sort');
 
 		/* Event that listens to input change value & call updateValue method */
 		document
@@ -17,9 +17,7 @@ class Controller {
 			.addEventListener('submit', this.submitHandler);
 
 		/* Event that listens to sort options changes */
-		document
-			.getElementById('sort')
-			.addEventListener('change', this.view.sortChangeHandler);
+		this.sort.addEventListener('change', this.sortChangeHandler);
 	}
 	/* Check if input isn't empty and submit form */
 	submitHandler = e => {
@@ -44,8 +42,8 @@ class Controller {
 			.then(res => res.json())
 			.then(res => {
 				for (let i = 0; i < res.length; i++) {
-					this.results = [
-						...this.results,
+					this.view.results = [
+						...this.view.results,
 						new Model(
 							res[i].show.name,
 							res[i].show.url,
@@ -57,17 +55,13 @@ class Controller {
 						)
 					];
 				}
-				if (this.results.length === 0) {
+				if (this.view.results.length === 0) {
 					this.view.noResultsHandler();
 				} else {
-					this.showResults();
+					this.view.showResults();
 				}
 			})
 			.catch(err => console.log(err));
-	};
-
-	showResults = () => {
-		this.results.map(result => this.view.render(result));
 	};
 
 	init = () => {
