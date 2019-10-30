@@ -59,9 +59,42 @@ class Controller {
 					this.view.noResultsHandler();
 				} else {
 					this.view.showResults();
+					console.log(this.view.results);
 				}
 			})
 			.catch(err => console.log(err));
+	};
+
+	/* This method handles changing sort types depending on event target value and calls proper method to sort search results */
+	sortChangeHandler = e => {
+		switch (e.target.value) {
+			case 'za':
+				this.view.sortByName();
+				this.view.results.reverse();
+				break;
+
+			case 'highestRating':
+				this.view.sortByRating();
+				break;
+
+			case 'lowestRating':
+				this.view.sortByRating();
+				this.view.results.reverse();
+				break;
+
+			case 'newest':
+				this.view.sortByReleaseDate();
+				break;
+
+			case 'oldest':
+				this.view.sortByReleaseDate();
+				this.view.results.reverse();
+				break;
+
+			default:
+				this.view.sortByName();
+		}
+		this.view.showResults();
 	};
 
 	init = () => {
