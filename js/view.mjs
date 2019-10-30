@@ -111,6 +111,11 @@ class View {
 		});
 	};
 
+	/* Method that sorts series by rating from highest to lowest. Rating is number or null, so this method convert rating to number. If rating is null, then it gets rating 0 */
+	sortByRating = () => {
+		this.results.sort((a, b) => Number(b.rating) - Number(a.rating));
+	};
+
 	// Method that update input value
 	updateValue = e => {
 		this.value = e.target.value;
