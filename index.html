@@ -4,7 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+		/>
 		<link rel="stylesheet" href="./css/styles.css" />
 		<title>Frontend Task</title>
 	</head>
@@ -40,11 +43,15 @@
 				</form>
 				<div class="options_container">
 					<div class="sort_container">
-						 <label for="sort" class="sort_header">Sort by:</label>
+						<label for="sort" class="sort_header">Sort by:</label>
 						<select name="sort-by" id="sort">
-							<option value="name">Name</option>
-							<option value="rating">Rating</option>
-							<option value="releaseDate">Release Date</option>
+							<option value="">Select option</option>
+							<option value="az">A-Z</option>
+							<option value="za">Z-A</option>
+							<option value="highestRating">Highest Rating</option>
+							<option value="lowestRating">Lowest Rating</option>
+							<option value="newest">Newest Series</option>
+							<option value="oldest">Oldest Series</option>
 						</select>
 					</div>
 				</div>
@@ -52,7 +59,9 @@
 			</main>
 			<footer class="footer">
 				<div class="footer_row">
-					<p class="footer_paragraph">Copyright &copy; <span id="footer_date"></span></p>
+					<p class="footer_paragraph">
+						Copyright &copy; <span id="footer_date"></span>
+					</p>
 				</div>
 				<div class="footer_row">
 					<p class="footer_paragraph">

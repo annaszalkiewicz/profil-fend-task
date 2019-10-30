@@ -92,6 +92,11 @@ class View {
 		const d = new Date();
 		return (document.getElementById('footer_date').innerHTML = d.getFullYear());
 	};
+
+	sortChangeHandler = () => {
+		console.log('Changed value');
+		
+	}
 }
 
 export default View;

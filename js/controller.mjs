@@ -15,6 +15,11 @@ class Controller {
 		document
 			.getElementById('form')
 			.addEventListener('submit', this.submitHandler);
+
+		/* Event that listens to sort options changes */
+		document
+			.getElementById('sort')
+			.addEventListener('change', this.view.sortChangeHandler);
 	}
 	/* Check if input isn't empty and submit form */
 	submitHandler = e => {
@@ -54,11 +59,9 @@ class Controller {
 				}
 				if (this.results.length === 0) {
 					this.view.noResultsHandler();
-				}
-				else {
+				} else {
 					this.showResults();
 				}
-
 			})
 			.catch(err => console.log(err));
 	};
