@@ -97,6 +97,20 @@ class View {
 		this.container.innerHTML = '';
 	};
 
+	sortByName = () => {
+		this.results.sort((a, b) => {
+			const nameA = a.title.toLowerCase();
+			const nameB = b.title.toLowerCase();
+
+			if (nameA < nameB) {
+				return -1;
+			} else if (nameA > nameB) {
+				return 1;
+			}
+			return 0;
+		});
+	};
+
 	// Method that update input value
 	updateValue = e => {
 		this.value = e.target.value;
