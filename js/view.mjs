@@ -3,6 +3,7 @@ class View {
 		this.model = model;
 		this.value = value;
 		this.results = [];
+		this.filtered = [];
 		this.container = document.getElementById('results');
 	}
 
@@ -80,8 +81,12 @@ class View {
 		// Clear all results children if exist
 		this.clearResults();
 
-		// And re-render all results
-		this.results.map(result => this.render(result));
+		if (this.filtered.length > 0) {
+			this.filtered.map(result => this.render(result));
+		} else {
+			// And re-render all results
+			this.results.map(result => this.render(result));
+		}
 	};
 
 	// Display warning message if no series found
@@ -125,6 +130,17 @@ class View {
 
 			return Date.parse(dateB) - Date.parse(dateA);
 		});
+	};
+
+	filterByStatus = e => {
+		this.filtered = [];
+		this.results.filter(result => {
+			if (result.status === e.target.value) {
+				return (this.filtered = [...this.filtered, result]);
+			}
+		});
+
+		this.showFiltered();
 	};
 
 	// Method that update input value
