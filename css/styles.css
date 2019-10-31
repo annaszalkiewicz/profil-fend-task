@@ -14,3 +14,10 @@ html, body {
 .container {
   width: 100%; }
 
+.header {
+  width: 100%;
+  background: linear-gradient(to bottom right, #00d6cf, #005754);
+  color: white;
+  padding: 1em;
+  box-shadow: 0 0 10px #606060; }
+
