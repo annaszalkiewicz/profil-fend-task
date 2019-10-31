@@ -133,7 +133,6 @@ class View {
 	};
 
 	showFiltered = () => {
-		
 		if (this.filtered.length === 0) {
 			this.clearResults();
 			this.noResultsHandler();
@@ -144,12 +143,35 @@ class View {
 
 	filterByStatus = e => {
 		this.filtered = [];
+		this.showResults();
 		this.results.filter(result => {
 			if (result.status === e.target.value) {
 				return (this.filtered = [...this.filtered, result]);
 			}
 		});
 
+		this.showFiltered();
+	};
+
+	/* This method filters results by release date.
+	1) It clears filtered array and show all results
+	2) Get release date shortened to year from results array and convert it to string
+	3) Compare result release date with value from input
+	4) Add items to filtered array if it matches condition
+	5) It displays filtered results.
+	*/
+	filterByDate = e => {
+		this.filtered = [];
+		this.showResults();
+
+		this.results.filter(result => {
+			if (new Date(result.releaseDate).getFullYear().toString() === e.target.value) {
+
+				return (this.filtered = [...this.filtered, result]);
+			}
+		});
+		console.log(this.filtered);
+		
 		this.showFiltered();
 	};
 
