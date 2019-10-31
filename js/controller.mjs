@@ -5,6 +5,7 @@ class Controller {
 		this.view = view;
 		this.model = model;
 		this.sort = document.getElementById('sort');
+		this.filterStatus = document.getElementById('filterByStatus');
 
 		/* Event that listens to input change value & call updateValue method */
 		document
@@ -18,6 +19,9 @@ class Controller {
 
 		/* Event that listens to sort options changes */
 		this.sort.addEventListener('change', this.sortChangeHandler);
+
+		/* Event that listens to filter by status options changes */
+		this.filterStatus.addEventListener('change', this.filterStatusHandler);
 	}
 	/* Check if input isn't empty and submit form */
 	submitHandler = e => {
@@ -97,10 +101,12 @@ class Controller {
 		this.view.showResults();
 	};
 
+	filterStatusHandler = e => {
+		this.view.filterByStatus(e);
+	};
+
 	init = () => {
 		this.view.displayYear();
-		console.log(this.view);
-		console.log(this.model);
 	};
 }
 
