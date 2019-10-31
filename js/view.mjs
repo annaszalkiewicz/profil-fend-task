@@ -132,6 +132,16 @@ class View {
 		});
 	};
 
+	showFiltered = () => {
+		
+		if (this.filtered.length === 0) {
+			this.clearResults();
+			this.noResultsHandler();
+		} else {
+			this.showResults();
+		}
+	};
+
 	filterByStatus = e => {
 		this.filtered = [];
 		this.results.filter(result => {
