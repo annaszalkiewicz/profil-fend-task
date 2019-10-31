@@ -6,6 +6,7 @@ class Controller {
 		this.model = model;
 		this.sort = document.getElementById('sort');
 		this.filterStatus = document.getElementById('filterByStatus');
+		this.filterDate = document.getElementById('filterByReleaseDate');
 
 		/* Event that listens to input change value & call updateValue method */
 		document
@@ -22,6 +23,9 @@ class Controller {
 
 		/* Event that listens to filter by status options changes */
 		this.filterStatus.addEventListener('change', this.filterStatusHandler);
+
+		/* Event that listens to filter by release date changes */
+		this.filterDate.addEventListener('change', this.filterDateHandler);
 	}
 	/* Check if input isn't empty and submit form */
 	submitHandler = e => {
@@ -104,6 +108,10 @@ class Controller {
 	filterStatusHandler = e => {
 		this.view.filterByStatus(e);
 	};
+
+	filterDateHandler = e => {
+		this.view.filterByDate(e);
+	}
 
 	init = () => {
 		this.view.displayYear();
