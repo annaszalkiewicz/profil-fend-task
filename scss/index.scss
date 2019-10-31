@@ -1,5 +1,7 @@
 @import 'variables';
 
+// General stylings
+
 * {
   box-sizing: border-box;
 }
@@ -9,5 +11,12 @@ html, body {
   height: 100%;
   text-align: center;
   background: $lightGrey;
+  font-family: $font;
+  font-size: 14px;
   color: black;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
 }
