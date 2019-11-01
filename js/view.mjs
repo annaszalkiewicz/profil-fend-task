@@ -5,6 +5,7 @@ class View {
 		this.results = [];
 		this.filtered = [];
 		this.container = document.getElementById('results');
+		this.filterContainer = document.getElementById('filters');
 	}
 
 	// Method that renders search results
@@ -174,6 +175,10 @@ class View {
 		
 		this.showFiltered();
 	};
+
+	showFilterContainer = () => {
+		this.filterContainer.classList.add('show');
+	}
 
 	// Method that update input value
 	updateValue = e => {

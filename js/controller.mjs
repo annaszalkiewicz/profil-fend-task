@@ -66,8 +66,8 @@ class Controller {
 				if (this.view.results.length === 0) {
 					this.view.noResultsHandler();
 				} else {
+					this.view.showFilterContainer();
 					this.view.showResults();
-					console.log(this.view.results);
 				}
 			})
 			.catch(err => console.log(err));
