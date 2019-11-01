@@ -32,6 +32,35 @@ a {
 .main {
   width: 100%; }
 
+.form {
+  padding: 2em; }
+
+.form_input {
+  margin: 2em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.form_input--text {
+  width: 80%;
+  padding: 0.8em;
+  font-size: 1em;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom: solid 2px #606060; }
+
+.form_input--submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #00d6cf, #005754);
+  border: none;
+  border-top-right-radius: 5px;
+  padding: 0.45em; }
+  .form_input--submit i {
+    font-size: 2em;
+    color: white; }
+
 .options_container {
   display: none; }
 

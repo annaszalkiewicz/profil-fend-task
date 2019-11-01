@@ -47,6 +47,39 @@ a {
 	width: 100%;
 }
 
+// Form
+
+.form {
+	padding: 2em;
+}
+.form_input {
+	margin: 2em 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.form_input--text {
+	width: 80%;
+	padding: 0.8em;
+	font-size: 1em;
+	border: none;
+	border-top-left-radius: 5px;
+	border-bottom: solid 2px $darkGrey;
+}
+.form_input--submit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: $gradient;
+	border: none;
+	border-top-right-radius: 5px;
+	padding: 0.45em;
+	i {
+		font-size: 2em;
+		color: white;
+	}
+}
+
 // Sort and filters
 
 .options_container {
