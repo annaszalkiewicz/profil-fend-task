@@ -29,6 +29,12 @@ a {
   padding: 1em;
   box-shadow: 0 0 10px #606060; }
 
+.main {
+  width: 100%; }
+
+.options_container {
+  display: none; }
+
 .footer {
   width: 100%;
   position: fixed;
