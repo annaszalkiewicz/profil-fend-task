@@ -67,6 +67,9 @@ a {
 .options_container {
   display: none; }
 
+.show {
+  display: block; }
+
 .footer {
   width: 100%;
   position: fixed;
