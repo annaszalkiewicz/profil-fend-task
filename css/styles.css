@@ -29,3 +29,20 @@ a {
   padding: 1em;
   box-shadow: 0 0 10px #606060; }
 
+.footer {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  background: linear-gradient(to bottom right, #00d6cf, #005754); }
+
+.footer_paragraph {
+  margin: 0;
+  color: white;
+  font-size: 0.8em; }
+  .footer_paragraph a {
+    color: white; }
+

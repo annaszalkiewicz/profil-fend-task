@@ -40,3 +40,26 @@ a {
 	padding: 1em;
 	box-shadow: $shadow;
 }
+
+
+// Footer
+
+.footer {
+	width: 100%;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	bottom: 0;
+	left: 0;
+	padding: 1em;
+	background: $gradient;
+}
+
+.footer_paragraph {
+	margin: 0;
+	color: white;
+	font-size: 0.8em;
+	a {
+		color: white;
+	}
+}
