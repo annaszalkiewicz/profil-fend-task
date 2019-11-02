@@ -7,7 +7,7 @@ class View {
 		this.filtered = [];
 		this.container = document.getElementById('results');
 		this.filterContainer = document.getElementById('filters');
-		this.scrollTop = document.getElementById('scrollToTop');
+		this.scrollTopButton = document.getElementById('scrollToTop');
 	}
 
 	// Method that renders search results
@@ -246,10 +246,10 @@ class View {
 	};
 
 	scrollToTop = () => {
-		if (document.body.scrollTop > window.innerHeight) {
-			return (this.scrollTop.style.display = 'block');
+		if (window.pageYOffset > window.innerHeight / 2) {
+			return (this.scrollTopButton.style.display = 'block');
 		} else {
-			return (this.scrollTop.style.display = 'none');
+			return (this.scrollTopButton.style.display = 'none');
 		}
 	};
 
