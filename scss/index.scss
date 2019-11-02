@@ -149,7 +149,7 @@ a {
 
 .main {
 	width: 100%;
-	margin: 3em auto 5em auto;
+	margin: 3em auto 1em auto;
 }
 
 // Search results
@@ -223,6 +223,10 @@ a {
 }
 .results_warning {
 	padding: 0 2em;
+}
+.results_nomore {
+	display: none;
+	margin-bottom: 7em;
 }
 
 // Footer

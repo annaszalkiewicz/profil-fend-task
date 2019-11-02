@@ -151,7 +151,8 @@ class View {
 	};
 
 	noMoreToShow = () => {
-		console.log('No more results to show');
+		const nomore = document.getElementById('results_nomore');
+		nomore.style.display = 'block';
 	};
 
 	// Display warning message if no series found
