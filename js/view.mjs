@@ -99,7 +99,7 @@ class View {
 		ratingContainer.classList.add('rating_container');
 		more.appendChild(ratingContainer);
 
-		// Creates date label
+		// Creates rating label
 		const ratingLabel = document.createElement('p');
 		ratingLabel.classList.add('rating_label');
 		ratingContainer.appendChild(ratingLabel);
@@ -109,7 +109,7 @@ class View {
 		const rating = document.createElement('p');
 		rating.classList.add('card_rating');
 		ratingContainer.appendChild(rating);
-		rating.innerHTML = result.rating ? result.rating : 'No rating yet';
+		rating.innerHTML = result.rating ? result.rating.toFixed(1) : 'No rating yet';
 	};
 
 	// Display all series from results array
