@@ -26,6 +26,9 @@ class Controller {
 
 		/* Event that listens to filter by release date changes */
 		this.filterDate.addEventListener('change', this.filterDateHandler);
+
+		/* Window scroll event that calls scrollHandler to show / hide scroll to top button */
+		window.addEventListener('scroll', this.view.scrollToTop, true);
 	}
 	/* Check if input isn't empty and submit form */
 	submitHandler = e => {
