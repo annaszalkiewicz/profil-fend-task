@@ -25,18 +25,33 @@ a {
 ::placeholder {
   font-style: italic; }
 
+.primary_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #00d6cf, #005754);
+  border: none;
+  padding: 0.45em;
+  color: white; }
+
+.input {
+  padding: 1em;
+  font-size: 1em;
+  border: none;
+  border-bottom: solid 2px #9d9d9d; }
+
 .header {
   width: 100%;
   background: linear-gradient(to bottom right, #00d6cf, #005754);
   color: white;
   padding: 1em;
-  box-shadow: 0 0 10px #606060; }
+  box-shadow: 5px 5px 10px #9d9d9d; }
 
 .main {
   width: 100%; }
 
 .form {
-  padding: 2em; }
+  padding: 2em 2em 0 2em; }
 
 .form_input {
   margin: 2em 0;
@@ -46,29 +61,61 @@ a {
 
 .form_input--text {
   width: 80%;
-  padding: 0.8em;
-  font-size: 1em;
-  border: none;
   border-top-left-radius: 5px;
-  border-bottom: solid 2px #606060; }
+  padding: 1.13em; }
 
 .form_input--submit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom right, #00d6cf, #005754);
-  border: none;
   border-top-right-radius: 5px;
-  padding: 0.45em; }
-  .form_input--submit i {
-    font-size: 2em;
-    color: white; }
+  font-size: 2em; }
 
 .options_container {
-  display: none; }
+  display: none;
+  margin: 0 2em; }
 
 .show {
   display: block; }
+
+.break {
+  margin: 2em 0; }
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.sort_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 2em; }
+  .sort_container label {
+    text-align: left;
+    margin-bottom: 0.5em; }
+
+.filter_container {
+  width: 100%; }
+
+.filter_status,
+.filter_releaseDate {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 2em; }
+  .filter_status label,
+  .filter_releaseDate label {
+    text-align: left;
+    margin-bottom: 0.5em; }
+
+.filters_button--submit {
+  font-size: 1.3em;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 0.5em 2em;
+  margin: 1em;
+  box-shadow: 5px 5px 10px #9d9d9d; }
 
 .footer {
   width: 100%;
