@@ -194,6 +194,9 @@ a {
   display: block;
   text-align: left; }
 
+.results_warning {
+  padding: 0 2em; }
+
 .footer {
   width: 100%;
   position: fixed;
