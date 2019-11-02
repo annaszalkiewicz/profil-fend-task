@@ -3,7 +3,7 @@
 $primaryColor: #00d6cf;
 $secondaryColor: #005754;
 $lightGrey: #f2f2f2;
-$darkGrey: #606060;
+$darkGrey: #9d9d9d;
 
 // Font
 
@@ -11,5 +11,6 @@ $font: 'Montserrat', sans-serif;
 
 // Miscellaneous
 
-$shadow: 0 0 10px $darkGrey;
+$shadow: 5px 5px 10px $darkGrey;
+$radius: 5px;
 $gradient: linear-gradient(to bottom right, $primaryColor, $secondaryColor);
