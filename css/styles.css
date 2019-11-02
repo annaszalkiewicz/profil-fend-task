@@ -211,3 +211,11 @@ a {
   .footer_paragraph a {
     color: white; }
 
+.scroll_top {
+  position: fixed;
+  display: none;
+  bottom: 4em;
+  right: 1em;
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px #9d9d9d; }
+

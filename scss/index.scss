@@ -222,6 +222,7 @@ a {
 	display: block;
 	text-align: left;
 }
+
 // Footer
 
 .footer {
@@ -242,4 +243,15 @@ a {
 	a {
 		color: white;
 	}
+}
+
+// Scroll to top button
+
+.scroll_top {
+	position: fixed;
+	display: none;
+	bottom: 4em;
+	right: 1em;
+	border-radius: 50%;
+	box-shadow: $shadow;
 }
