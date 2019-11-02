@@ -52,11 +52,19 @@ a {
     transform: translateX(0); }
 
 .header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
   background: linear-gradient(to bottom right, #00d6cf, #005754);
   color: white;
   padding: 1em;
   box-shadow: 5px 5px 10px #9d9d9d; }
+  .header i {
+    font-size: 2em; }
+  .header h1 {
+    font-size: 1em;
+    margin-left: 1em; }
 
 .form {
   padding: 2em 2em 0 2em; }

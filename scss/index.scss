@@ -64,11 +64,21 @@ a {
 // Header
 
 .header {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 	width: 100%;
 	background: $gradient;
 	color: white;
 	padding: 1em;
 	box-shadow: $shadow;
+	i {
+		font-size: 2em;
+	}
+	h1 {
+		font-size: 1em;
+		margin-left: 1em;
+	}
 }
 
 // Form
