@@ -20,9 +20,11 @@
 		<title>Frontend Task</title>
 	</head>
 	<body>
-		<a href="#main" role="button" class="primary_button skip_link">Skip to content</a>
+		<a href="#main" role="button" class="primary_button skip_link"
+			>Skip to content</a
+		>
 		<div class="container">
-			<header class="header">
+			<header class="header" id="header">
 				<h1 class="header_heading">
 					What would you like to watch?
 				</h1>
@@ -116,6 +118,14 @@
 					</p>
 				</div>
 			</footer>
+			<a
+				href="#header"
+				class="primary_button scroll_top"
+				role="button"
+				id="scrollToTop"
+			>
+				<i class="material-icons">keyboard_arrow_up</i>
+			</a>
 		</div>
 		<script type="module" src="./js/app.mjs"></script>
 	</body>
