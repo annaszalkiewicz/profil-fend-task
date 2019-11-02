@@ -3,6 +3,7 @@ class View {
 		this.model = model;
 		this.value = value;
 		this.results = [];
+		this.shown = [];
 		this.filtered = [];
 		this.container = document.getElementById('results');
 		this.filterContainer = document.getElementById('filters');
@@ -109,27 +110,27 @@ class View {
 		const rating = document.createElement('p');
 		rating.classList.add('card_rating');
 		ratingContainer.appendChild(rating);
-		rating.innerHTML = result.rating ? result.rating.toFixed(1) : 'No rating yet';
+		rating.innerHTML = result.rating
+			? result.rating.toFixed(1)
+			: 'No rating yet';
 	};
 
-	// Display all series from results array
+	// Display series from results array
 	showResults = () => {
 		// Clear all results children if exist
 		this.clearResults();
 
-			if (this.filtered.length > 0) {
-				this.filtered.map(result => this.render(result));
-			} else {
-				// And re-render all results
-				this.results.map(result => this.render(result));
+		if (this.filtered.length > 0) {
+			this.filtered.map(result => this.render(result));
+		} else {
+			// Display 4 results initially
+			for (let i = 0; i < 4; i++) {
+				let result = this.results[i];
+				this.render(result);
+				this.shown = [...this.shown, result];
 			}
-		
+		}
 	};
-
-	loadMoreResults = () => {
-		console.log('Loading more');
-		
-	}
 
 	// Display warning message if no series found
 	noResultsHandler = () => {
@@ -224,10 +225,9 @@ class View {
 
 	scrollToTop = () => {
 		if (document.body.scrollTop > window.innerHeight) {
-			return this.scrollTop.style.display = 'block';
-		}
-		else {
-			return this.scrollTop.style.display = 'none';
+			return (this.scrollTop.style.display = 'block');
+		} else {
+			return (this.scrollTop.style.display = 'none');
 		}
 	};
 
