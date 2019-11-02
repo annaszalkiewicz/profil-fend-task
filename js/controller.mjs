@@ -28,14 +28,12 @@ class Controller {
 		/* Event that listens to filter by release date changes */
 		this.filterDate.addEventListener('change', this.filterDateHandler);
 
-		/* Window scroll event that calls scrollHandler to show / hide scroll to top button */
-
-		window.onscroll = this.view.scrollToTop;
-
+		/* Window scroll event that calls scrollHandler */
 		window.onscroll = this.scrollHandler;
 	}
 
-	scrollHandler = e => {
+	scrollHandler = () => {
+		this.view.scrollToTop();
 		//Detect if user is at the ottom of the page
 		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
 			this.view.loadMoreResults();
