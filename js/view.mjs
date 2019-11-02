@@ -132,6 +132,28 @@ class View {
 		}
 	};
 
+	loadMoreResults = () => {
+		// Check if there are more results to show after scrolling at the bottom of the page
+
+		let startFrom = this.shown.length;
+		let max = startFrom + 4;
+
+		if (this.shown.length < this.results.length) {
+			for (let i = startFrom; i < max; i++) {
+				if (this.shown.length < this.results.length) {
+					this.render(this.results[i]);
+					this.shown = [...this.shown, this.results[i]];
+				} else {
+					this.noMoreToShow();
+				}
+			}
+		}
+	};
+
+	noMoreToShow = () => {
+		console.log('No more results to show');
+	};
+
 	// Display warning message if no series found
 	noResultsHandler = () => {
 		const message = document.createElement('p');
