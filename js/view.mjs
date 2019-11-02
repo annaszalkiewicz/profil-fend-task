@@ -6,6 +6,7 @@ class View {
 		this.filtered = [];
 		this.container = document.getElementById('results');
 		this.filterContainer = document.getElementById('filters');
+		this.scrollTop = document.getElementById('scrollToTop');
 	}
 
 	// Method that renders search results
@@ -213,6 +214,15 @@ class View {
 
 	showFilterContainer = () => {
 		this.filterContainer.classList.add('show');
+	};
+
+	scrollToTop = () => {
+		if (document.body.scrollTop > window.innerHeight) {
+			return this.scrollTop.style.display = 'block';
+		}
+		else {
+			return this.scrollTop.style.display = 'none';
+		}
 	};
 
 	// Method that update input value
