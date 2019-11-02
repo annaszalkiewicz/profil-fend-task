@@ -7,6 +7,7 @@ class Controller {
 		this.sort = document.getElementById('sort');
 		this.filterStatus = document.getElementById('filterByStatus');
 		this.filterDate = document.getElementById('filterByReleaseDate');
+		this.container = document.getElementById('results');
 
 		/* Event that listens to input change value & call updateValue method */
 		document
@@ -28,8 +29,18 @@ class Controller {
 		this.filterDate.addEventListener('change', this.filterDateHandler);
 
 		/* Window scroll event that calls scrollHandler to show / hide scroll to top button */
-		window.addEventListener('scroll', this.view.scrollToTop, true);
+
+		window.onscroll = this.view.scrollToTop;
+
+		window.onscroll = this.scrollHandler;
 	}
+
+	scrollHandler = e => {
+		//Detect if user is at the ottom of the page
+		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+			this.view.loadMoreResults();
+		}
+	};
 	/* Check if input isn't empty and submit form */
 	submitHandler = e => {
 		e.preventDefault();
@@ -114,7 +125,7 @@ class Controller {
 
 	filterDateHandler = e => {
 		this.view.filterByDate(e);
-	}
+	};
 
 	init = () => {
 		this.view.displayYear();

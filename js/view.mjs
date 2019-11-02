@@ -117,13 +117,19 @@ class View {
 		// Clear all results children if exist
 		this.clearResults();
 
-		if (this.filtered.length > 0) {
-			this.filtered.map(result => this.render(result));
-		} else {
-			// And re-render all results
-			this.results.map(result => this.render(result));
-		}
+			if (this.filtered.length > 0) {
+				this.filtered.map(result => this.render(result));
+			} else {
+				// And re-render all results
+				this.results.map(result => this.render(result));
+			}
+		
 	};
+
+	loadMoreResults = () => {
+		console.log('Loading more');
+		
+	}
 
 	// Display warning message if no series found
 	noResultsHandler = () => {
