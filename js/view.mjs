@@ -56,24 +56,58 @@ class View {
 		more.classList.add('card_more');
 		details.appendChild(more);
 
+		// Creates date container
+
+		const dateContainer = document.createElement('div');
+		dateContainer.classList.add('date_container');
+		more.appendChild(dateContainer);
+
+		// Creates date label
+		const dateLabel = document.createElement('p');
+		dateLabel.classList.add('date_label');
+		dateContainer.appendChild(dateLabel);
+		dateLabel.innerHTML = 'Release date:';
+
 		/* Display release date; if no available, display 'Unknown release date' */
 		const date = document.createElement('p');
 		date.classList.add('card_date');
-		more.appendChild(date);
-		date.innerHTML = result.releaseDate
-			? result.releaseDate
-			: 'Unknown release date';
+		dateContainer.appendChild(date);
+		date.innerHTML = result.releaseDate ? result.releaseDate : 'TBD';
+
+		// Creates status container
+
+		const statusContainer = document.createElement('div');
+		statusContainer.classList.add('status_container');
+		more.appendChild(statusContainer);
+
+		// Creates status label
+		const statusLabel = document.createElement('p');
+		statusLabel.classList.add('status_label');
+		statusContainer.appendChild(statusLabel);
+		statusLabel.innerHTML = 'Status:';
 
 		// Display status; if no available, display 'Unknown status'
 		const status = document.createElement('p');
 		status.classList.add('card_status');
-		more.appendChild(status);
-		status.innerHTML = result.status ? result.status : 'Unknown status';
+		statusContainer.appendChild(status);
+		status.innerHTML = result.status ? result.status : 'TBD';
+
+		// Creates rating container
+
+		const ratingContainer = document.createElement('div');
+		ratingContainer.classList.add('rating_container');
+		more.appendChild(ratingContainer);
+
+		// Creates date label
+		const ratingLabel = document.createElement('p');
+		ratingLabel.classList.add('rating_label');
+		ratingContainer.appendChild(ratingLabel);
+		ratingLabel.innerHTML = 'Rating:';
 
 		// Display rating; if no available, display 'No rating yet'
 		const rating = document.createElement('p');
 		rating.classList.add('card_rating');
-		more.appendChild(rating);
+		ratingContainer.appendChild(rating);
 		rating.innerHTML = result.rating ? result.rating : 'No rating yet';
 	};
 
@@ -166,19 +200,20 @@ class View {
 		this.showResults();
 
 		this.results.filter(result => {
-			if (new Date(result.releaseDate).getFullYear().toString() === e.target.value) {
-
+			if (
+				new Date(result.releaseDate).getFullYear().toString() === e.target.value
+			) {
 				return (this.filtered = [...this.filtered, result]);
 			}
 		});
 		console.log(this.filtered);
-		
+
 		this.showFiltered();
 	};
 
 	showFilterContainer = () => {
 		this.filterContainer.classList.add('show');
-	}
+	};
 
 	// Method that update input value
 	updateValue = e => {
