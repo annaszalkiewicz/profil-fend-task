@@ -80,6 +80,7 @@ class Controller {
 				} else {
 					this.view.showFilterContainer();
 					this.view.showResults();
+					this.view.changeFooterPosition();
 				}
 			})
 			.catch(err => console.log(err));
@@ -127,6 +128,7 @@ class Controller {
 
 	init = () => {
 		this.view.displayYear();
+		this.view.changeFooterPosition();
 	};
 }
 

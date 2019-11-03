@@ -206,11 +206,10 @@ a {
 
 .results_nomore {
   display: none;
-  margin-bottom: 7em; }
+  margin-bottom: 2em; }
 
 .footer {
   width: 100%;
-  position: fixed;
   display: flex;
   flex-direction: column;
   bottom: 0;
@@ -232,4 +231,5 @@ a {
   right: 1em;
   border-radius: 50%;
   box-shadow: 5px 5px 10px #9d9d9d; }
+
 

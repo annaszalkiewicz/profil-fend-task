@@ -264,6 +264,16 @@ class View {
 		const d = new Date();
 		return (document.getElementById('footer_date').innerHTML = d.getFullYear());
 	};
+
+	/* Show footer at the bottom initially, but when results are displayed, show it under results at the end of document */
+	changeFooterPosition = () => {
+		const footer = document.getElementById('footer');
+		if (this.results.length === 0) {
+			footer.style.position = 'absolute';
+		} else {
+			footer.style.position = 'relative';
+		}
+	};
 }
 
 export default View;
