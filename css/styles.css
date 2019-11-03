@@ -293,9 +293,13 @@ a {
     margin: 2em 0; }
   .scroll_top {
     right: 1em;
-    left: unset; }
+    left: unset;
+    bottom: 5em; }
+    .scroll_top i {
+      font-size: 3em; }
   .footer {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; } }
+    align-items: center;
+    font-size: 1.5em; } }
 

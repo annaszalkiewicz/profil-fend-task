@@ -83,10 +83,15 @@
   .scroll_top {
     right: 1em;
     left: unset;
+    bottom: 5em;
+    i {
+      font-size: 3em;
+    }
   }
   .footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.5em;
   }
 }
