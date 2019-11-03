@@ -165,6 +165,12 @@ class View {
 			'Sorry, no series found. Please, try to search for another one.';
 	};
 
+	// Error handling if fetch request fails
+	errorMessage = () => {
+		this.clearResults();
+		this.container.innerHTML = 'Sorry, there was a problem with your request. Please try again :('
+	}
+
 	reset = () => {
 		this.results = [];
 		this.shown = [];
@@ -173,13 +179,9 @@ class View {
 	}
 
 	clearResults = () => {
-		console.log(this.results);
-
-		
 		this.container.innerHTML = '';
 	};
 
-	
 	filterByStatus = value => {			
 		this.filtered = [];
 		if (value === '') {
