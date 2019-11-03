@@ -5,6 +5,7 @@ class View {
 		this.results = [];
 		this.shown = [];
 		this.filtered = [];
+		this.filteredByDate = [];
 		this.container = document.getElementById('results');
 		this.filterContainer = document.getElementById('filters');
 		this.scrollTopButton = document.getElementById('scrollToTop');
@@ -168,8 +169,46 @@ class View {
 		this.container.innerHTML = '';
 	};
 
+	
+	filterByStatus = value => {			
+		this.filtered = [];
+		if (value === '') {
+			this.filtered = this.results;
+		}
+		else {
+			this.results.filter(result => {
+				if (result.status === value) {
+
+					return (this.filtered = [...this.filtered, result]);
+				}
+			});
+		}
+	};
+
+	/* This method filters results by release date.
+	1) It clears filtered array and show all results
+	2) Get release date shortened to year from results array and convert it to string
+	3) Compare result release date with value from input
+	4) Add items to filtered array if it matches condition
+	5) It displays filtered results.
+	*/
+	filterByDate = value => {
+		this.filtered.filter(result => {
+			if (value === '') {
+				this.filteredByDate = this.filtered;
+			}
+			if (
+				new Date(result.releaseDate).getFullYear().toString() === value
+			) {
+				return (this.filteredByDate = [...this.filteredByDate, result]);
+			}
+		});
+		console.log(this.filteredByDate);
+	};
+
+
 	sortByName = () => {
-		this.results.sort((a, b) => {
+		this.filteredByDate.sort((a, b) => {
 			const nameA = a.title.toLowerCase();
 			const nameB = b.title.toLowerCase();
 
@@ -184,13 +223,13 @@ class View {
 
 	/* Method that sorts series by rating from highest to lowest. Rating is number or null, so this method convert rating to number. If rating is null, then it gets rating 0 */
 	sortByRating = () => {
-		this.results.sort((a, b) => Number(b.rating) - Number(a.rating));
+		this.filteredByDate.sort((a, b) => Number(b.rating) - Number(a.rating));
 	};
 
 	/* Method that sorts series by release from newest to oldest. First it converts release date to Date, parse date to miliseconds and compare numbers */
 
 	sortByReleaseDate = () => {
-		this.results.sort((a, b) => {
+		this.filteredByDate.sort((a, b) => {
 			const dateA = new Date(a.releaseDate);
 			const dateB = new Date(b.releaseDate);
 
@@ -199,47 +238,14 @@ class View {
 	};
 
 	showFiltered = () => {
-		if (this.filtered.length === 0) {
-			this.clearResults();
+		console.log(this.filteredByDate);
+		this.clearResults();
+		
+		if (this.filteredByDate.length === 0) {
 			this.noResultsHandler();
 		} else {
-			this.showResults();
+			this.filteredByDate.map(result => this.render(result));
 		}
-	};
-
-	filterByStatus = e => {
-		this.filtered = [];
-		this.showResults();
-		this.results.filter(result => {
-			if (result.status === e.target.value) {
-				return (this.filtered = [...this.filtered, result]);
-			}
-		});
-
-		this.showFiltered();
-	};
-
-	/* This method filters results by release date.
-	1) It clears filtered array and show all results
-	2) Get release date shortened to year from results array and convert it to string
-	3) Compare result release date with value from input
-	4) Add items to filtered array if it matches condition
-	5) It displays filtered results.
-	*/
-	filterByDate = e => {
-		this.filtered = [];
-		this.showResults();
-
-		this.results.filter(result => {
-			if (
-				new Date(result.releaseDate).getFullYear().toString() === e.target.value
-			) {
-				return (this.filtered = [...this.filtered, result]);
-			}
-		});
-		console.log(this.filtered);
-
-		this.showFiltered();
 	};
 
 	showFilterContainer = () => {

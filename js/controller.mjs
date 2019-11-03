@@ -8,6 +8,7 @@ class Controller {
 		this.filterStatus = document.getElementById('filterByStatus');
 		this.filterDate = document.getElementById('filterByReleaseDate');
 		this.container = document.getElementById('results');
+		this.sortAndFilters = document.getElementById('sortAndFilters');
 
 		/* Event that listens to input change value & call updateValue method */
 		document
@@ -19,14 +20,8 @@ class Controller {
 			.getElementById('form')
 			.addEventListener('submit', this.submitHandler);
 
-		/* Event that listens to sort options changes */
-		this.sort.addEventListener('change', this.sortChangeHandler);
-
-		/* Event that listens to filter by status options changes */
-		this.filterStatus.addEventListener('change', this.filterStatusHandler);
-
-		/* Event that listens to filter by release date changes */
-		this.filterDate.addEventListener('change', this.filterDateHandler);
+		/* Event that submits sort and filters form */
+		this.sortAndFilters.addEventListener('submit', this.submitFilters);
 
 		/* Window scroll event that calls scrollHandler */
 		window.onscroll = this.scrollHandler;
@@ -87,12 +82,20 @@ class Controller {
 			.catch(err => console.log(err));
 	};
 
+	submitFilters = e => {
+		e.preventDefault();
+		this.view.filterByStatus(this.filterStatus.value);
+		this.view.filterByDate(this.filterDate.value);
+		this.sortChangeHandler(this.sort.value);
+		this.view.showFiltered();
+	};
+
 	/* This method handles changing sort types depending on event target value and calls proper method to sort search results */
-	sortChangeHandler = e => {
-		switch (e.target.value) {
+	sortChangeHandler = value => {		
+		switch (value) {
 			case 'za':
 				this.view.sortByName();
-				this.view.results.reverse();
+				this.view.filteredByDate.reverse();
 				break;
 
 			case 'highestRating':
@@ -101,7 +104,7 @@ class Controller {
 
 			case 'lowestRating':
 				this.view.sortByRating();
-				this.view.results.reverse();
+				this.view.filteredByDate.reverse();
 				break;
 
 			case 'newest':
@@ -110,21 +113,12 @@ class Controller {
 
 			case 'oldest':
 				this.view.sortByReleaseDate();
-				this.view.results.reverse();
+				this.view.filteredByDate.reverse();
 				break;
 
 			default:
 				this.view.sortByName();
-		}
-		this.view.showResults();
-	};
-
-	filterStatusHandler = e => {
-		this.view.filterByStatus(e);
-	};
-
-	filterDateHandler = e => {
-		this.view.filterByDate(e);
+		}		
 	};
 
 	init = () => {
