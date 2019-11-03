@@ -2,8 +2,8 @@
 @media screen and (min-width: 480px) {
 	.card_container {
 		width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
+		flex-direction: row;
+		justify-content: space-between;
 	}
 	.card_details {
 		width: 53.5%;
@@ -12,93 +12,126 @@
 
 /* Responsive design for standard size landscape mobiles */
 @media screen and (min-width: 640px) {
-  .main_container {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-  }
-  .options_container {
-    width: 25%;
-    margin: 1em 1em 0 0;
-  }
-  .break {
-    display: none;
-  }
-  .main {
-    width: 73%;
-    margin: 0;
-  }
-  .card_container {
-    width: 452px;
-    margin-right: 1em;
-  }
-  .filters_button--submit {
-    margin: 0 auto;
-  }
-  .sticky {
-    position: fixed;
-    top: 0;
-    right: 0;
-  }
+	.main_container {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+	}
+	.options_container {
+		width: 25%;
+		margin: 1em 1em 0 0;
+	}
+	.break {
+		display: none;
+	}
+	.main {
+		width: 73%;
+		margin: 0;
+	}
+	.card_container {
+		width: 452px;
+		margin-right: 1em;
+	}
+	.filters_button--submit {
+		margin: 0 auto;
+	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		right: 0;
+	}
 }
 /* Responsive design for portrait tablets */
 
 @media screen and (min-width: 768px) {
-  .header {
-    i {
-      font-size: 4em;
-    }
-    h1 {
-      font-size: 2em;
-    }
-  }
-  .search_container {
-    margin: 3em auto;
-  }
-  .form {
-    margin: 2em;
-    label {
-      font-size: 1.5em;
-    }
-  }
-  .main_container {
-    margin: 0 2em 0 0;
-  }
-  .sticky {
-    top: 2em;
-    right: 1em;
-  }
-  .card_container {
-    width: 500px;
-  }
-  .image_container {
-    margin: 0;
-  }
-  .card_details {
-    width: 290px;
-  }
-  .card_description {
-    margin: 2em 0;
-  }
-  .scroll_top {
-    right: 1em;
-    left: unset;
-    bottom: 5em;
-    i {
-      font-size: 3em;
-    }
-  }
-  .footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.5em;
-  }
+	.header {
+		i {
+			font-size: 4em;
+		}
+		h1 {
+			font-size: 2em;
+		}
+	}
+	.search_container {
+		margin: 3em auto;
+	}
+	.form {
+		margin: 2em;
+		label {
+			font-size: 1.5em;
+		}
+	}
+	.main_container {
+		margin: 0 2em 0 0;
+	}
+	.sticky {
+		top: 2em;
+		right: 1em;
+	}
+	.card_container {
+		width: 500px;
+	}
+	.image_container {
+		margin: 0;
+	}
+	.card_details {
+		width: 290px;
+	}
+	.card_description {
+		margin: 2em 0;
+	}
+	.scroll_top {
+		right: 1em;
+		left: unset;
+		bottom: 5em;
+		i {
+			font-size: 3em;
+		}
+	}
+	.footer {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1.5em;
+	}
 }
 
 /* Responsive design for landscape tablets */
 @media screen and (min-width: 1024px) {
-  .sticky {
-    right: 2em;
-  }
+	.sticky {
+		right: 2em;
+	}
+}
+
+/* Responsive design for medium resolutions laptops */
+@media screen and (min-width: 1280px) {
+	.form_input--text {
+		width: 50%;
+	}
+	.main_container {
+		margin-right: 0;
+	}
+	.options_container {
+		margin: 1em 0 0 0;
+	}
+	.sticky {
+		right: 1em;
+	}
+	.card_container {
+		width: 430px;
+	}
+	.card_description {
+		margin: 1em 0;
+		height: 6.6em;
+	}
+	.date_label,
+	.status_label,
+	.rating_label {
+		width: 40%;
+	}
+	.card_date,
+	.card_status,
+	.card_rating {
+		width: 55%;
+	}
 }

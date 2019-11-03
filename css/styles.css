@@ -308,3 +308,27 @@ a {
   .sticky {
     right: 2em; } }
 
+/* Responsive design for medium resolutions laptops */
+@media screen and (min-width: 1280px) {
+  .form_input--text {
+    width: 50%; }
+  .main_container {
+    margin-right: 0; }
+  .options_container {
+    margin: 1em 0 0 0; }
+  .sticky {
+    right: 1em; }
+  .card_container {
+    width: 430px; }
+  .card_description {
+    margin: 1em 0;
+    height: 6.6em; }
+  .date_label,
+  .status_label,
+  .rating_label {
+    width: 40%; }
+  .card_date,
+  .card_status,
+  .card_rating {
+    width: 55%; } }
+
