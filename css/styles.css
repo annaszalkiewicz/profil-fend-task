@@ -153,6 +153,17 @@ a {
   width: 100%;
   margin: 3em auto 1em auto; }
 
+.loading {
+  font-size: 4em;
+  color: #9d9d9d;
+  animation: rotate 1s linear infinite; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 .results_container {
   display: flex;
   flex-wrap: wrap;
