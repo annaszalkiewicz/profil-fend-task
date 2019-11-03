@@ -12,6 +12,9 @@ $font: 'Montserrat', sans-serif;
 // Miscellaneous
 
 $shadow: 5px 5px 10px $darkGrey;
+$shadowHover: 2px 2px 2px $darkGrey;
 $radius: 5px;
 $gradient: linear-gradient(to bottom right, $primaryColor, $secondaryColor);
+$gradientHover: linear-gradient(to bottom right, $secondaryColor, $primaryColor);
 $border: solid 1px $darkGrey;
+$transition: all 0.3s ease;

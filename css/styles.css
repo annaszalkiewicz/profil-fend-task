@@ -33,7 +33,11 @@ a {
   background: linear-gradient(to bottom right, #00d6cf, #005754);
   border: none;
   padding: 0.45em;
-  color: white; }
+  color: white;
+  transition: all 0.3s ease; }
+  .primary_button:hover {
+    box-shadow: 2px 2px 2px #9d9d9d;
+    background: linear-gradient(to bottom right, #005754, #00d6cf); }
 
 .input {
   padding: 1em;
@@ -153,7 +157,11 @@ a {
   margin: 1em;
   border-radius: 5px;
   overflow: hidden;
-  font-weight: normal; }
+  font-weight: normal;
+  transition: all 0.3s ease; }
+  .card_container:hover {
+    box-shadow: 2px 2px 2px #9d9d9d;
+    text-decoration: none; }
 
 .image_container {
   width: 210px;

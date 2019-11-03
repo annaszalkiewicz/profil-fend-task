@@ -39,6 +39,11 @@ a {
 	border: none;
 	padding: 0.45em;
 	color: white;
+	transition: $transition;
+	&:hover {
+		box-shadow: $shadowHover;
+		background: $gradientHover;
+	}
 }
 .input {
 	padding: 1em;
@@ -182,6 +187,11 @@ a {
 	border-radius: $radius;
 	overflow: hidden;
 	font-weight: normal;
+	transition: $transition;
+	&:hover {
+		box-shadow: $shadowHover;
+		text-decoration: none;
+	}
 }
 .image_container {
 	width: 210px;
