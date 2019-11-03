@@ -135,3 +135,34 @@
 		width: 55%;
 	}
 }
+
+/* Responsive design for laptops and desktops */
+@media screen and (min-width: 1440px) {
+  .main_container {
+    width: 1440px;
+    margin: auto;
+  }
+  .options_container {
+    width: 20%;
+    margin: 1em 3em 0 auto;
+  }
+  .card_container {
+    width: 500px;
+    margin: 0.5em;
+	}
+  .sticky {
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .main_container {
+    width: 1450px;
+  }
+  .sticky {
+    right: 10em;
+  }
+  .card_container {
+    margin: 1em;
+  }
+}
