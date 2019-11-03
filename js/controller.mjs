@@ -9,11 +9,10 @@ class Controller {
 		this.filterDate = document.getElementById('filterByReleaseDate');
 		this.container = document.getElementById('results');
 		this.sortAndFilters = document.getElementById('sortAndFilters');
+		// this.inputName = document.getElementById('name');
 
 		/* Event that listens to input change value & call updateValue method */
-		document
-			.getElementById('name')
-			.addEventListener('change', this.view.updateValue);
+		// this.inputName.addEventListener('change', this.inputChangeHandler);
 
 		/* Event that listens to submit form */
 		document
@@ -35,8 +34,16 @@ class Controller {
 			this.view.loadMoreResults();
 		}
 	};
+
+	// inputChangeHandler = (e) => {
+	// 	console.log('Input changed');
+		
+	// 	this.view.clearResults();
+	// 	this.view.updateValue(e);
+	// }
 	/* Check if input isn't empty and submit form */
 	submitHandler = e => {
+
 		e.preventDefault();
 
 		const input = document.getElementById('name');
@@ -57,6 +64,7 @@ class Controller {
 		})
 			.then(res => res.json())
 			.then(res => {
+				this.view.reset();
 				for (let i = 0; i < res.length; i++) {
 					this.view.results = [
 						...this.view.results,

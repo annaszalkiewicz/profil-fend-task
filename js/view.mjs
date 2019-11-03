@@ -165,7 +165,17 @@ class View {
 			'Sorry, no series found. Please, try to search for another one.';
 	};
 
+	reset = () => {
+		this.results = [];
+		this.shown = [];
+		this.filtered = [];
+		this.filteredByDate = [];
+	}
+
 	clearResults = () => {
+		console.log(this.results);
+
+		
 		this.container.innerHTML = '';
 	};
 
