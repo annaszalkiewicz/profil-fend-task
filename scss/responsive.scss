@@ -95,3 +95,10 @@
     font-size: 1.5em;
   }
 }
+
+/* Responsive design for landscape tablets */
+@media screen and (min-width: 1024px) {
+  .sticky {
+    right: 2em;
+  }
+}
