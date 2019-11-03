@@ -55,6 +55,8 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+  background: black;
+  color: white;
   border: solid 1px black;
   padding: 0.5em;
   transform: translateX(-500px);
