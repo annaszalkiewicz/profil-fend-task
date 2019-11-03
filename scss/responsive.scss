@@ -1,3 +1,4 @@
+/* Responsive design for small landscape mobiles */
 @media screen and (min-width: 480px) {
 	.card_container {
 		width: 100%;
@@ -6,4 +7,31 @@
 	.card_details {
 		width: 53.5%;
 	}
+}
+
+/* Responsive design for standard size landscape mobiles */
+@media screen and (min-width: 640px) {
+  .main_container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  .options_container {
+    width: 25%;
+    margin: 1em;
+  }
+  .break {
+    display: none;
+  }
+  .main {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .card_container {
+    width: 452px;
+    margin: 1em 0 1em 1em;
+  }
+  .filters_button--submit {
+    margin: 0 auto;
+  }
 }

@@ -51,56 +51,58 @@
 					</div>
 				</form>
 			</section>
-			<aside class="options_container" id="filters">
-				<hr class="break" />
-				<form class="filters">
-					<div class="sort_container">
-						<label for="sort" class="sort_header">Sort by:</label>
-						<select name="sort-by" id="sort" class="input">
-							<option value="">Select option</option>
-							<option value="az">A-Z</option>
-							<option value="za">Z-A</option>
-							<option value="highestRating">Highest Rating</option>
-							<option value="lowestRating">Lowest Rating</option>
-							<option value="newest">Newest Series</option>
-							<option value="oldest">Oldest Series</option>
-						</select>
-					</div>
-					<div class="filter_container">
-						<div class="filter_status">
-							<label for="filter" class="filter_header"
-								>Filter by status:</label
-							>
-							<select name="filter-by" id="filterByStatus" class="input">
-								<option value="">Select filter</option>
-								<option value="Running">Running</option>
-								<option value="Ended">Ended</option>
-								<option value="In Development">In Development</option>
-								<option value="To be Determined">To be Determined</option>
+			<div class="main_container">
+				<aside class="options_container" id="filters">
+					<hr class="break" />
+					<form class="filters">
+						<div class="sort_container">
+							<label for="sort" class="sort_header">Sort by:</label>
+							<select name="sort-by" id="sort" class="input">
+								<option value="">Select option</option>
+								<option value="az">A-Z</option>
+								<option value="za">Z-A</option>
+								<option value="highestRating">Highest Rating</option>
+								<option value="lowestRating">Lowest Rating</option>
+								<option value="newest">Newest Series</option>
+								<option value="oldest">Oldest Series</option>
 							</select>
 						</div>
-						<div class="filter_releaseDate">
-							<label for="filterByReleaseDate">Filter by release date:</label>
-							<input
-								type="number"
-								name="filter-y-name"
-								id="filterByReleaseDate"
-								min="1900"
-								max="2019"
-								class="input"
-								placeholder="Type release year"
-							/>
+						<div class="filter_container">
+							<div class="filter_status">
+								<label for="filter" class="filter_header"
+									>Filter by status:</label
+								>
+								<select name="filter-by" id="filterByStatus" class="input">
+									<option value="">Select filter</option>
+									<option value="Running">Running</option>
+									<option value="Ended">Ended</option>
+									<option value="In Development">In Development</option>
+									<option value="To be Determined">To be Determined</option>
+								</select>
+							</div>
+							<div class="filter_releaseDate">
+								<label for="filterByReleaseDate">Filter by release date:</label>
+								<input
+									type="number"
+									name="filter-y-name"
+									id="filterByReleaseDate"
+									min="1900"
+									max="2019"
+									class="input"
+									placeholder="Type release year"
+								/>
+							</div>
 						</div>
-					</div>
-					<button type="submit" class="primary_button filters_button--submit">
-						Filter
-					</button>
-				</form>
-				<hr class="break" />
-			</aside>
-			<main class="main" id="main">
-				<div class="results_container" id="results"></div>
-			</main>
+						<button type="submit" class="primary_button filters_button--submit">
+							Filter
+						</button>
+					</form>
+					<hr class="break" />
+				</aside>
+				<main class="main" id="main">
+					<div class="results_container" id="results"></div>
+				</main>
+			</div>
 			<p class="results_nomore" id="results_nomore">
 				No more results to show
 			</p>
