@@ -85,6 +85,9 @@ a {
 
 .form {
 	padding: 2em 2em 0 2em;
+	label {
+		font-weight: bold;
+	}
 }
 .form_input {
 	margin: 2em 0;

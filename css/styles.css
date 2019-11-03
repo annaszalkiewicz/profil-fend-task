@@ -68,6 +68,8 @@ a {
 
 .form {
   padding: 2em 2em 0 2em; }
+  .form label {
+    font-weight: bold; }
 
 .form_input {
   margin: 2em 0;
@@ -235,7 +237,8 @@ a {
 @media screen and (min-width: 480px) {
   .card_container {
     width: 100%;
-    flex-direction: row; }
+    flex-direction: row;
+    justify-content: space-between; }
   .card_details {
     width: 53.5%; } }
 
@@ -262,4 +265,37 @@ a {
     position: fixed;
     top: 0;
     right: 0; } }
+
+/* Responsive design for portrait tablets */
+@media screen and (min-width: 768px) {
+  .header i {
+    font-size: 4em; }
+  .header h1 {
+    font-size: 2em; }
+  .search_container {
+    margin: 3em auto; }
+  .form {
+    margin: 2em; }
+    .form label {
+      font-size: 1.5em; }
+  .main_container {
+    margin: 0 2em 0 0; }
+  .sticky {
+    top: 2em;
+    right: 1em; }
+  .card_container {
+    width: 500px; }
+  .image_container {
+    margin: 0; }
+  .card_details {
+    width: 290px; }
+  .card_description {
+    margin: 2em 0; }
+  .scroll_top {
+    right: 1em;
+    left: unset; }
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; } }
 
