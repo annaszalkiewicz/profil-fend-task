@@ -254,6 +254,17 @@ class View {
 		}
 	};
 
+	setStickySidebar = () => {
+		if (window.innerWidth >= 640) {
+			if (window.pageYOffset > 250) {
+				this.filterContainer.classList.add('sticky');
+			}
+			else {
+				this.filterContainer.classList.remove('sticky');
+			}
+		}
+	};
+
 	// Method that update input value
 	updateValue = e => {
 		this.value = e.target.value;

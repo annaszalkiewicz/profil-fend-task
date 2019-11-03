@@ -34,6 +34,7 @@ class Controller {
 
 	scrollHandler = () => {
 		this.view.scrollToTop();
+		this.view.setStickySidebar();
 		//Detect if user is at the ottom of the page
 		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
 			this.view.loadMoreResults();
