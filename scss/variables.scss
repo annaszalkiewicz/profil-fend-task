@@ -17,4 +17,5 @@ $radius: 5px;
 $gradient: linear-gradient(to bottom right, $primaryColor, $secondaryColor);
 $gradientHover: linear-gradient(to bottom right, $secondaryColor, $primaryColor);
 $border: solid 1px $darkGrey;
+$borderFocus: solid 2px $primaryColor;
 $transition: all 0.3s ease;

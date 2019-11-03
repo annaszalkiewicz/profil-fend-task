@@ -24,7 +24,7 @@ a {
 	text-decoration: none;
 	color: black;
 	font-weight: bold;
-	&:hover {
+	&:hover, &:focus {
 		text-decoration: underline;
 	}
 }
@@ -40,9 +40,10 @@ a {
 	padding: 0.45em;
 	color: white;
 	transition: $transition;
-	&:hover {
+	&:hover, &:focus {
 		box-shadow: $shadowHover;
 		background: $gradientHover;
+		border: $borderFocus;
 	}
 }
 .input {
@@ -50,6 +51,12 @@ a {
 	font-size: 1em;
 	border: none;
 	border-bottom: solid 2px $darkGrey;
+	&:focus {
+		border: $borderFocus;
+	}
+}
+:focus {
+	outline: 0; //Will be replaced by custom border
 }
 
 // Skip link
@@ -61,6 +68,7 @@ a {
 	border: solid 1px black;
 	padding: 0.5em;
 	transform: translateX(-500px);
+	transition: $transition;
 	&:focus {
 		transform: translateX(0);
 	}
@@ -191,6 +199,10 @@ a {
 	&:hover {
 		box-shadow: $shadowHover;
 		text-decoration: none;
+	}
+	&:focus {
+		box-shadow: $shadowHover;
+		border: $borderFocus;
 	}
 }
 .image_container {
