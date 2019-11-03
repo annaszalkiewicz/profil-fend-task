@@ -165,7 +165,6 @@ a {
 .card_details {
   display: flex;
   flex-direction: column;
-  width: 100%;
   padding: 1em 1.5em; }
 
 .card_title {
@@ -232,4 +231,17 @@ a {
   border-radius: 50%;
   box-shadow: 5px 5px 10px #9d9d9d; }
 
+@media screen and (min-width: 480px) {
+  .card_container {
+    width: 100%;
+    flex-direction: row; }
+  .card_details {
+    width: 53.5%; } }
+
+@media screen and (min-width: 480px) {
+  .card_container {
+    width: 100%;
+    flex-direction: row; }
+  .card_details {
+    width: 53.5%; } }
 

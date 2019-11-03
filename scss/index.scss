@@ -193,7 +193,7 @@ a {
 .card_details {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	// width: 100%;
 	padding: 1em 1.5em;
 }
 .card_title {
@@ -270,3 +270,5 @@ a {
 	border-radius: 50%;
 	box-shadow: $shadow;
 }
+
+@import 'responsive';
