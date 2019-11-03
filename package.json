@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "gulp"
+    "start": "gulp",
+    "build": "gulp build"
   },
   "author": "Anna Szalkiewicz",
   "license": "ISC",
@@ -17,7 +18,8 @@
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-sass": "^4.0.2"
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
   },
   "dependencies": {}
 }
