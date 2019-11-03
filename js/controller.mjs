@@ -54,6 +54,7 @@ class Controller {
 			.then(res => res.json())
 			.then(res => {
 				this.view.reset();
+				this.view.showLoadingIndicator();
 				for (let i = 0; i < res.length; i++) {
 					this.view.results = [
 						...this.view.results,
@@ -88,7 +89,7 @@ class Controller {
 	};
 
 	/* This method handles changing sort types depending on event target value and calls proper method to sort search results */
-	sortChangeHandler = value => {		
+	sortChangeHandler = value => {
 		switch (value) {
 			case 'za':
 				this.view.sortByName();
@@ -115,7 +116,7 @@ class Controller {
 
 			default:
 				this.view.sortByName();
-		}		
+		}
 	};
 
 	init = () => {

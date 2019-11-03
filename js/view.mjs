@@ -165,6 +165,14 @@ class View {
 			'Sorry, no series found. Please, try to search for another one.';
 	};
 
+	showLoadingIndicator = () => {
+		const icon = '<i class="material-icons loading">refresh</i>';
+		const div = document.createElement('div');
+		// div.classList.add('loading');
+		div.innerHTML = `${icon}`;
+		this.container.appendChild(div);
+	}
+
 	// Error handling if fetch request fails
 	errorMessage = () => {
 		this.clearResults();
