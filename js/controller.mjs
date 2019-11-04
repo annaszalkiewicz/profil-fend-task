@@ -116,7 +116,6 @@ class Controller {
 
 	submitFilters = e => {
 		e.preventDefault();
-		this.view.filterByStatus(this.filterStatus.value);
 		this.view.filterByDate(this.filterDate.value);
 		this.sortChangeHandler(this.sort.value);
 		this.view.showFiltered();

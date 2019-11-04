@@ -136,7 +136,6 @@ class View {
 		for (let i = 0; i < 12; i++) {
 			let result = this.results[i];
 			this.render(result);
-			this.shown = [...this.shown, result];
 		}
 
 		this.changeFooterPosition();
@@ -151,6 +150,8 @@ class View {
 
 	loadMoreResults = () => {
 		// Check if there are more results to show after scrolling at the bottom of the page
+		console.log(this.results);
+				
 
 		let startFrom = this.shown.length;
 		let max = startFrom + 12;
@@ -205,19 +206,6 @@ class View {
 
 	clearResults = () => {
 		this.container.innerHTML = '';
-	};
-
-	filterByStatus = value => {
-		this.filtered = [];
-		if (value === '') {
-			this.filtered = this.results;
-		} else {
-			this.results.filter(result => {
-				if (result.status === value) {
-					return (this.filtered = [...this.filtered, result]);
-				}
-			});
-		}
 	};
 
 	/* This method filters results by release date.
