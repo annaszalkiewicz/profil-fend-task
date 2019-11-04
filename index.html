@@ -16,13 +16,13 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
 		/>
+		<!-- build:css -->
 		<link rel="stylesheet" href="./css/styles.css" />
+		<!-- endbuild -->
 		<title>Frontend Task</title>
 	</head>
 	<body>
-		<a href="#main" role="button" class="skip_link"
-			>Skip to content</a
-		>
+		<a href="#main" role="button" class="skip_link">Skip to content</a>
 		<div class="container">
 			<header class="header" id="header">
 				<i class="material-icons">live_tv</i>
@@ -56,16 +56,21 @@
 					<hr class="break" />
 					<form class="filters" id="sortAndFilters">
 						<div class="filter_container">
-							<div class="filter_status">
+							<div class="filter_rating">
 								<label for="filter" class="filter_header"
-									>Filter by status:</label
+									>Filter by rating:</label
 								>
-								<select name="filter-by" id="filterByStatus" class="input">
-									<option value="">Select filter</option>
-									<option value="Running">Running</option>
-									<option value="Ended">Ended</option>
-									<option value="In Development">In Development</option>
-									<option value="To be Determined">To be Determined</option>
+								<select name="filter-by" id="filterByRating" class="input">
+									<option value="">Select option</option>
+									<option value="9">9+</option>
+									<option value="8">8+</option>
+									<option value="7">7+</option>
+									<option value="6">6+</option>
+									<option value="5">5+</option>
+									<option value="4">4+</option>
+									<option value="3">3+</option>
+									<option value="2">2+</option>
+									<option value="1">1+</option>
 								</select>
 							</div>
 							<div class="filter_releaseDate">
@@ -81,17 +86,17 @@
 								/>
 							</div>
 							<div class="sort_container">
-									<label for="sort" class="sort_header">Sort by:</label>
-									<select name="sort-by" id="sort" class="input">
-										<option value="">Select option</option>
-										<option value="az">A-Z</option>
-										<option value="za">Z-A</option>
-										<option value="highestRating">Highest Rating</option>
-										<option value="lowestRating">Lowest Rating</option>
-										<option value="newest">Newest Series</option>
-										<option value="oldest">Oldest Series</option>
-									</select>
-								</div>
+								<label for="sort" class="sort_header">Sort by:</label>
+								<select name="sort-by" id="sort" class="input">
+									<option value="">Select option</option>
+									<option value="az">A-Z</option>
+									<option value="za">Z-A</option>
+									<option value="highestRating">Highest Rating</option>
+									<option value="lowestRating">Lowest Rating</option>
+									<option value="newest">Newest Series</option>
+									<option value="oldest">Oldest Series</option>
+								</select>
+							</div>
 						</div>
 						<button type="submit" class="primary_button filters_button--submit">
 							Filter
@@ -133,6 +138,8 @@
 				<i class="material-icons">keyboard_arrow_up</i>
 			</a>
 		</div>
+		<!-- build:js -->
 		<script type="module" src="./js/app.mjs"></script>
+		<!-- endbuild -->
 	</body>
 </html>
