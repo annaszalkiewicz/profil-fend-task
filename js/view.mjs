@@ -14,30 +14,24 @@ class View {
 	// Method that renders search results
 	render = result => {
 		/* Creates card container with link to page with full details */
-		const url = document.createElement('a');
-		url.setAttribute('href', `${result.url}`);
-		url.classList.add('card_container');
-		this.container.appendChild(url);
+		const div = document.createElement('div');
+		div.classList.add('card_container');
+		this.container.appendChild(div);
 
 		// Creates image container
 		const imageContainer = document.createElement('div');
 		imageContainer.classList.add('image_container');
-		url.appendChild(imageContainer);
+		div.appendChild(imageContainer);
 
 		/* Creates image inside image container; if no image available, display image placeholder */
 		const image = document.createElement('img');
-		image.setAttribute(
-			'src',
-			result.image === null
-				? '../img/placeholder.jpg'
-				: `${result.image.medium}`
-		);
+		image.setAttribute('src', result.image);
 		imageContainer.appendChild(image);
 
 		/* Creates details container that is sibling to image container */
 		const details = document.createElement('div');
 		details.classList.add('card_details');
-		url.appendChild(details);
+		div.appendChild(details);
 
 		/* Creates series title; if no title available display 'No title' instead */
 		const title = document.createElement('h2');
@@ -77,24 +71,6 @@ class View {
 		dateContainer.appendChild(date);
 		date.innerHTML = result.releaseDate ? result.releaseDate : 'TBD';
 
-		// Creates status container
-
-		const statusContainer = document.createElement('div');
-		statusContainer.classList.add('status_container');
-		more.appendChild(statusContainer);
-
-		// Creates status label
-		const statusLabel = document.createElement('p');
-		statusLabel.classList.add('status_label');
-		statusContainer.appendChild(statusLabel);
-		statusLabel.innerHTML = 'Status:';
-
-		// Display status; if no available, display 'Unknown status'
-		const status = document.createElement('p');
-		status.classList.add('card_status');
-		statusContainer.appendChild(status);
-		status.innerHTML = result.status ? result.status : 'TBD';
-
 		// Creates rating container
 
 		const ratingContainer = document.createElement('div');
@@ -112,32 +88,72 @@ class View {
 		rating.classList.add('card_rating');
 		ratingContainer.appendChild(rating);
 		rating.innerHTML = result.rating
-			? result.rating.toFixed(1)
+			? Number(result.rating).toFixed(1)
 			: 'No rating yet';
+
+		// Creates runtime container
+		const runtimeContainer = document.createElement('div');
+		runtimeContainer.classList.add('runtime_container');
+		more.appendChild(runtimeContainer);
+
+		// Creates runtime label
+		const runtimeLabel = document.createElement('p');
+		runtimeLabel.classList.add('runtime_label');
+		runtimeContainer.appendChild(runtimeLabel);
+		runtimeLabel.innerHTML = 'Runtime:';
+
+		// Display runtime; if no available, display 'No rating yet'
+		const runtime = document.createElement('p');
+		runtime.classList.add('card_runtime');
+		runtimeContainer.appendChild(runtime);
+		runtime.innerHTML = result.runtime ? result.runtime : 'Unknown runtime';
+
+		// Creates awards container
+		const awardsContainer = document.createElement('div');
+		awardsContainer.classList.add('awards_container');
+		more.appendChild(awardsContainer);
+
+		// Creates awards label
+		const awardsLabel = document.createElement('p');
+		awardsLabel.classList.add('runtime_label');
+		awardsContainer.appendChild(awardsLabel);
+		awardsLabel.innerHTML = 'Awards:';
+
+		// Display awards; if no available, display 'No rating yet'
+		const awards = document.createElement('p');
+		awards.classList.add('card_awards');
+		awardsContainer.appendChild(awards);
+		awards.innerHTML = result.awards ? result.awards : 'Unknown runtime';
 	};
 
 	// Display series from results array
 	showResults = () => {
 		// Clear all results children if exist
 		this.clearResults();
+		console.log(this.results);
 
-		if (this.filtered.length > 0) {
-			this.filtered.map(result => this.render(result));
-		} else {
-			// Display 12 results initially
-			for (let i = 0; i < 12; i++) {
-				let result = this.results[i];
-				this.render(result);
-				this.shown = [...this.shown, result];
-			}
+		// Display 12 results initially
+		for (let i = 0; i < 12; i++) {
+			let result = this.results[i];
+			this.render(result);
+			this.shown = [...this.shown, result];
 		}
+
+		this.changeFooterPosition();
 	};
+	// showResults = () => {
+
+	// if (this.filtered.length > 0) {
+	// 	this.filtered.map(result => this.render(result));
+	// } else {
+
+	// };
 
 	loadMoreResults = () => {
 		// Check if there are more results to show after scrolling at the bottom of the page
 
 		let startFrom = this.shown.length;
-		let max = startFrom + 4;
+		let max = startFrom + 12;
 
 		if (this.shown.length < this.results.length) {
 			for (let i = startFrom; i < max; i++) {
@@ -171,34 +187,33 @@ class View {
 		// div.classList.add('loading');
 		div.innerHTML = `${icon}`;
 		this.container.appendChild(div);
-	}
+	};
 
 	// Error handling if fetch request fails
 	errorMessage = () => {
 		this.clearResults();
-		this.container.innerHTML = 'Sorry, there was a problem with your request. Please try again :('
-	}
+		this.container.innerHTML =
+			'Sorry, there was a problem with your request. Please try again :(';
+	};
 
 	reset = () => {
 		this.results = [];
 		this.shown = [];
 		this.filtered = [];
 		this.filteredByDate = [];
-	}
+	};
 
 	clearResults = () => {
 		this.container.innerHTML = '';
 	};
 
-	filterByStatus = value => {			
+	filterByStatus = value => {
 		this.filtered = [];
 		if (value === '') {
 			this.filtered = this.results;
-		}
-		else {
+		} else {
 			this.results.filter(result => {
 				if (result.status === value) {
-
 					return (this.filtered = [...this.filtered, result]);
 				}
 			});
@@ -217,15 +232,12 @@ class View {
 			if (value === '') {
 				this.filteredByDate = this.filtered;
 			}
-			if (
-				new Date(result.releaseDate).getFullYear().toString() === value
-			) {
+			if (new Date(result.releaseDate).getFullYear().toString() === value) {
 				return (this.filteredByDate = [...this.filteredByDate, result]);
 			}
 		});
 		console.log(this.filteredByDate);
 	};
-
 
 	sortByName = () => {
 		this.filteredByDate.sort((a, b) => {
@@ -260,7 +272,7 @@ class View {
 	showFiltered = () => {
 		console.log(this.filteredByDate);
 		this.clearResults();
-		
+
 		if (this.filteredByDate.length === 0) {
 			this.noResultsHandler();
 		} else {
@@ -284,8 +296,7 @@ class View {
 		if (window.innerWidth >= 640) {
 			if (window.pageYOffset > 250) {
 				this.filterContainer.classList.add('sticky');
-			}
-			else {
+			} else {
 				this.filterContainer.classList.remove('sticky');
 			}
 		}
