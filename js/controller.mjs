@@ -9,6 +9,7 @@ class Controller {
 		this.filterDate = document.getElementById('filterByReleaseDate');
 		this.container = document.getElementById('results');
 		this.sortAndFilters = document.getElementById('sortAndFilters');
+		this.seriesIds = [];
 
 		/* Event that listens to submit form */
 		document
@@ -26,7 +27,7 @@ class Controller {
 		this.view.scrollToTop();
 		this.view.setStickySidebar();
 		//Detect if user is at the ottom of the page
-		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {			
 			this.view.loadMoreResults();
 		}
 	};
@@ -44,40 +45,73 @@ class Controller {
 		}
 	};
 
-	fetchSeries = () => {
+	fetchSeries = async () => {
 		const input = document.getElementById('name');
 		let query = input.value.trim();
 
-		fetch(`https://api.tvmaze.com/search/shows?q=${query}`, {
-			method: 'GET'
-		})
+		// 	this.view.reset();
+		// 	this.view.showLoadingIndicator();
+
+		await fetch(
+			`http://www.omdbapi.com/?apikey=ad082f40&type=series&s=${query}`
+		)
 			.then(res => res.json())
 			.then(res => {
-				this.view.reset();
-				this.view.showLoadingIndicator();
-				for (let i = 0; i < res.length; i++) {
-					this.view.results = [
-						...this.view.results,
-						new Model(
-							res[i].show.name,
-							res[i].show.url,
-							res[i].show.image,
-							res[i].show.status,
-							res[i].show.premiered,
-							res[i].show.rating.average,
-							res[i].show.summary
-						)
-					];
-				}
-				if (this.view.results.length === 0) {
-					this.view.noResultsHandler();
-				} else {
-					this.view.showFilterContainer();
-					this.view.showResults();
-					this.view.changeFooterPosition();
-				}
+				let totalPages = Math.ceil(res.totalResults / 10);
+				this.getSeriesIds(totalPages, query);
 			})
-			.catch(err => this.view.errorMessage());
+			.catch(err => console.log(err));
+	};
+
+	getSeriesIds = async (pages, query) => {
+		let ids = [];
+		for (let i = 1; i < pages + 1; i++) {
+			await fetch(
+				`http://www.omdbapi.com/?apikey=ad082f40&type=series&page=${i}&s=${query}`
+			)
+				.then(res => res.json())
+				.then(res => {
+					for (let j = 0; j < res['Search'].length; j++) {
+						ids = [...ids, res['Search'][j].imdbID];
+					}
+				});
+		}
+		Promise.all([this.fetchSeries, this.getSeriesIds]).then(() => {
+			if (ids.length === 0) {
+				this.view.noResultsHandler();
+			} else {
+				this.view.showFilterContainer();
+				this.fetchSeriesDetails(ids);
+				// this.view.changeFooterPosition();
+			}
+		});
+	};
+
+	// Display series from results array
+	fetchSeriesDetails = ids => {
+		for (let i = 0; i < ids.length; i++) {
+			fetch(`http://www.omdbapi.com/?apikey=ad082f40&i=${ids[i]}&plot=short`)
+				.then(res => res.json())
+				.then(res => {
+					return this.createModels(res);
+				});
+		}
+	};
+
+	createModels = res => {
+		this.view.results = [
+			...this.view.results,
+			new Model(
+				res.Title,
+				res.Poster,
+				res.Released,
+				res.Runtime,
+				res.imdbRating,
+				res.Plot,
+				res.Awards
+			)
+		];
+		this.view.showResults();
 	};
 
 	submitFilters = e => {
