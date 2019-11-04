@@ -27,8 +27,8 @@ class Controller {
 		this.view.scrollToTop();
 		this.view.setStickySidebar();
 		//Detect if user is at the ottom of the page
-		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {			
-			this.view.loadMoreResults();
+		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+			this.loadMoreResults();
 		}
 	};
 
@@ -112,6 +112,23 @@ class Controller {
 			)
 		];
 		this.view.showResults();
+	};
+
+	loadMoreResults = () => {
+		let startFrom = this.view.shown;
+		let max = startFrom + 12;
+
+		// Check if there are more results to show after scrolling at the bottom of the page
+		if (startFrom < this.view.results.length) {
+			for (let i = startFrom; i < max; i++) {
+				if (startFrom < this.view.results.length) {
+					this.view.render(this.view.results[i]);
+					this.view.shown += 12;
+				} else {
+					this.view.noMoreToShow();
+				}
+			}
+		}
 	};
 
 	submitFilters = e => {
