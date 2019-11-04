@@ -124,8 +124,8 @@ class View {
 		if (this.filtered.length > 0) {
 			this.filtered.map(result => this.render(result));
 		} else {
-			// Display 4 results initially
-			for (let i = 0; i < 4; i++) {
+			// Display 12 results initially
+			for (let i = 0; i < 12; i++) {
 				let result = this.results[i];
 				this.render(result);
 				this.shown = [...this.shown, result];
