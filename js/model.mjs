@@ -1,12 +1,12 @@
 class Model {
-	constructor(title, url, image, status, releaseDate, rating, description) {
+	constructor(title, image, releaseDate, runtime, rating, description, awards) {
 		this.title = title;
-		this.url = url;
 		this.image = image;
-		this.status = status;
 		this.releaseDate = releaseDate;
+		this.runtime = runtime;
 		this.rating = rating;
 		this.description = description;
+		this.awards = awards;
 	}
 }
 
