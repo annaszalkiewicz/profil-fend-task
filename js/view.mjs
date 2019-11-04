@@ -3,7 +3,7 @@ class View {
 		this.model = model;
 		this.value = value;
 		this.results = [];
-		this.shown = [];
+		this.shown = 0;
 		this.filtered = [];
 		this.filteredByDate = [];
 		this.container = document.getElementById('results');
@@ -25,7 +25,7 @@ class View {
 
 		/* Creates image inside image container; if no image available, display image placeholder */
 		const image = document.createElement('img');
-		image.setAttribute('src', result.image);
+		image.setAttribute('src', result.image !== 'N/A' ? result.image : '../img/placeholder.jpg');
 		imageContainer.appendChild(image);
 
 		/* Creates details container that is sibling to image container */
@@ -130,13 +130,13 @@ class View {
 	showResults = () => {
 		// Clear all results children if exist
 		this.clearResults();
-		console.log(this.results);
 
 		// Display 12 results initially
 		for (let i = 0; i < 12; i++) {
 			let result = this.results[i];
 			this.render(result);
 		}
+		this.shown = 12;
 
 		this.changeFooterPosition();
 	};
@@ -148,25 +148,7 @@ class View {
 
 	// };
 
-	loadMoreResults = () => {
-		// Check if there are more results to show after scrolling at the bottom of the page
-		console.log(this.results);
-				
 
-		let startFrom = this.shown.length;
-		let max = startFrom + 12;
-
-		if (this.shown.length < this.results.length) {
-			for (let i = startFrom; i < max; i++) {
-				if (this.shown.length < this.results.length) {
-					this.render(this.results[i]);
-					this.shown = [...this.shown, this.results[i]];
-				} else {
-					this.noMoreToShow();
-				}
-			}
-		}
-	};
 
 	noMoreToShow = () => {
 		const nomore = document.getElementById('results_nomore');
