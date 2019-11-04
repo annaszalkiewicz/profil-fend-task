@@ -126,12 +126,16 @@
 	}
 	.date_label,
 	.status_label,
-	.rating_label {
+	.rating_label,
+	.runtime_label,
+	.awards_label {
 		width: 40%;
 	}
 	.card_date,
 	.card_status,
-	.card_rating {
+	.card_rating,
+	.card_runtime,
+	.card_awards {
 		width: 55%;
 	}
 }

@@ -56,8 +56,9 @@ a {
 		border: $borderFocus;
 	}
 }
+//Will be replaced by custom border
 :focus {
-	outline: 0; //Will be replaced by custom border
+	outline: 0;
 }
 
 // Skip link
@@ -257,20 +258,26 @@ a {
 }
 .date_container,
 .status_container,
-.rating_container {
+.rating_container,
+.runtime_container,
+.awards_container {
 	display: flex;
 	justify-content: space-between;
 }
 .date_label,
 .status_label,
-.rating_label {
+.rating_label,
+.runtime_label,
+.awards_label {
 	display: block;
 	width: 45%;
 	text-align: right;
 }
 .card_date,
 .card_status,
-.card_rating {
+.card_rating,
+.card_runtime,
+.card_awards {
 	width: 50%;
 	display: block;
 	text-align: left;
