@@ -25,7 +25,10 @@ class View {
 
 		/* Creates image inside image container; if no image available, display image placeholder */
 		const image = document.createElement('img');
-		image.setAttribute('src', result.image !== 'N/A' ? result.image : '../img/placeholder.jpg');
+		image.setAttribute(
+			'src',
+			result.image !== 'N/A' ? result.image : '../img/placeholder.jpg'
+		);
 		imageContainer.appendChild(image);
 
 		/* Creates details container that is sibling to image container */
@@ -148,8 +151,6 @@ class View {
 
 	// };
 
-
-
 	noMoreToShow = () => {
 		const nomore = document.getElementById('results_nomore');
 		nomore.style.display = 'block';
@@ -188,6 +189,26 @@ class View {
 
 	clearResults = () => {
 		this.container.innerHTML = '';
+	};
+
+	// Filter by rating
+	filterByRating = value => {
+		// Reset all filters
+		this.filtered = [];
+		this.filteredByDate = [];
+
+		// If result match filter criteria, add it to filtered array
+		this.results.filter(result => {
+			if (parseFloat(result.rating) >= parseFloat(value)) {
+				return (this.filtered = [...this.filtered, result]);
+			}
+			// If value is empty, add all results to filtered
+			else if (value === '') {
+				return (this.filtered = this.results);
+			}
+		});
+
+		console.log(this.filtered);
 	};
 
 	/* This method filters results by release date.

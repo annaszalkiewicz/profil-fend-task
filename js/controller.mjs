@@ -5,7 +5,7 @@ class Controller {
 		this.view = view;
 		this.model = model;
 		this.sort = document.getElementById('sort');
-		this.filterStatus = document.getElementById('filterByStatus');
+		this.filterRating = document.getElementById('filterByRating');
 		this.filterDate = document.getElementById('filterByReleaseDate');
 		this.container = document.getElementById('results');
 		this.sortAndFilters = document.getElementById('sortAndFilters');
@@ -133,9 +133,10 @@ class Controller {
 
 	submitFilters = e => {
 		e.preventDefault();
-		this.view.filterByDate(this.filterDate.value);
-		this.sortChangeHandler(this.sort.value);
-		this.view.showFiltered();
+		this.view.filterByRating(this.filterRating.value);
+		// this.view.filterByDate(this.filterDate.value);
+		// this.sortChangeHandler(this.sort.value);
+		// this.view.showFiltered();
 	};
 
 	/* This method handles changing sort types depending on event target value and calls proper method to sort search results */
