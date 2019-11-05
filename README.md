@@ -6,7 +6,7 @@ The purpose of this project is to create web app that allows user to search seri
 
 ## Project Requirements
 
-Based on free API: http://www.tvmaze.com/api create web application which allows searching series by name.
+Based on free API: ~~http://www.tvmaze.com/api~~ [OMDB API](http://www.omdbapi.com/) create web application which allows searching series by name.
 
 ### Functionalities:
 
@@ -15,11 +15,12 @@ Based on free API: http://www.tvmaze.com/api create web application which allows
 * If there are no results that match the search, the message should be displayed
 * Each scrolling to the bottom of the page should cause loading the next 12 results (if exist)
 * If there are no more results, the message should be displayed
-* Every result should contain: cover image, title, status (if the show is running), relase date, rating and description shortened to max 100 characters
+* Every result should contain: cover image, title, relase date, runtime, rating and description shortened to max 100 characters
+* If the TV show won any award, it should be marked somehow
 * If there is no cover image, the default cover image should be displayed
-* If any data is missing there should be displayed an information
-* There should be possibility to sort results by name, rating and relase date
-* There should be possibility to filter result by status and relase year
+* If any data is missing, there should be displayed an information
+* There should be possibility to sort results by name, rating and release date
+* There should be possibility to filter result by rating and release year
 
 * Recruitment task should be written in pure JS (no framework is not allowed). Do not use libraries (e.g. Boostrap) for styling.
 
@@ -44,16 +45,16 @@ npm start
 
 ## Dependencies
 
-* [TVMaze API](https://www.tvmaze.com/api)
+* [OMDB API](http://www.omdbapi.com/)
 * [Font Montserrat on Google](https://fonts.google.com/specimen/Montserrat)
 * [Material Icons](https://material.io/tools/icons)
 * [Normalize.css](https://necolas.github.io/normalize.css/)
 * [Gulp](https://gulpjs.com/)
 * [Gulp Autoprefixer Plugin](https://www.npmjs.com/package/gulp-autoprefixer)
 * [Gulp Browsersync](https://browsersync.io/)
-* [Gulp Babel](https://www.npmjs.com/package/gulp-babel/)
 * [Gulp Sass](https://github.com/dlmanning/gulp-sass#readme)
 * [Gulp Concat](https://github.com/gulp-community/gulp-concat#readme)
+* [Gulp Sourcemaps](https://github.com/gulp-sourcemaps/gulp-sourcemaps)
 
 ## Contributions
 
