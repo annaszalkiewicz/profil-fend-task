@@ -5,23 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "gulp",
-    "build": "gulp build"
+    "start": "gulp"
   },
   "author": "Anna Szalkiewicz",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.6.3",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
-    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
-    "gulp-html-replace": "^1.6.2",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5"
-  },
-  "dependencies": {}
+  }
 }
