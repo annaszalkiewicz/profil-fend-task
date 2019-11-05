@@ -27,8 +27,8 @@ class Controller {
 		this.view.scrollToTop();
 		this.view.setStickySidebar();
 		//Detect if user is at the ottom of the page
-		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight && this.view.filteredByDate.length === 0) {
-			this.loadMoreResults();
+		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight && this.view.filteredByDate.length === 0) {			
+			this.view.loadMoreResults();
 		}
 	};
 
@@ -49,8 +49,8 @@ class Controller {
 		const input = document.getElementById('name');
 		let query = input.value.trim();
 
-		// 	this.view.reset();
-		// 	this.view.showLoadingIndicator();
+			this.view.reset();
+			this.view.showLoadingIndicator();
 
 		await fetch(
 			`http://www.omdbapi.com/?apikey=ad082f40&type=series&s=${query}`
@@ -60,7 +60,7 @@ class Controller {
 				let totalPages = Math.ceil(res.totalResults / 10);
 				this.getSeriesIds(totalPages, query);
 			})
-			.catch(err => console.log(err));
+			.catch(err => alert('Sorry, there was a problem with your request. Please try again'));
 	};
 
 	getSeriesIds = async (pages, query) => {
@@ -74,7 +74,8 @@ class Controller {
 					for (let j = 0; j < res['Search'].length; j++) {
 						ids = [...ids, res['Search'][j].imdbID];
 					}
-				});
+				})
+				.catch(err => alert('Sorry, there was a problem with your request. Please try again'));
 		}
 		Promise.all([this.fetchSeries, this.getSeriesIds]).then(() => {
 			if (ids.length === 0) {
@@ -94,7 +95,8 @@ class Controller {
 				.then(res => res.json())
 				.then(res => {
 					return this.createModels(res);
-				});
+				})
+				.catch(err => console.log(err))
 		}
 	};
 
@@ -112,23 +114,6 @@ class Controller {
 			)
 		];
 		this.view.showResults();
-	};
-
-	loadMoreResults = () => {
-		let startFrom = this.view.shown;
-		let max = startFrom + 12;
-
-		// Check if there are more results to show after scrolling at the bottom of the page
-		if (startFrom < this.view.results.length) {
-			for (let i = startFrom; i < max; i++) {
-				if (startFrom < this.view.results.length) {
-					this.view.render(this.view.results[i]);
-					this.view.shown += 12;
-				} else {
-					this.view.noMoreToShow();
-				}
-			}
-		}
 	};
 
 	submitFilters = e => {

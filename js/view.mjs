@@ -134,13 +134,34 @@ class View {
 		// Clear all results children if exist
 		this.clearResults();
 
-		// Display 12 results initially
-		for (let i = 0; i < 12; i++) {
-			let result = this.results[i];
-			this.render(result);
+		if (this.filteredByDate.length > 0) {
+			this.filteredByDate.map(result => this.render(result));
+		} else {
+			// Display 12 results initially
+			for (let i = 0; i < 12; i++) {
+				let result = this.results[i];
+				this.render(result);
+			}
 		}
 		this.shown = 12;
 		this.changeFooterPosition();
+	};
+
+	loadMoreResults = () => {
+		let startFrom = this.shown;
+		
+		let max = startFrom + 12;
+
+		if (startFrom < this.results.length) {
+			for (let i = startFrom; i < max; i++) {
+				if (max < this.results.length) {
+					this.render(this.results[i]);
+				} else {
+					this.noMoreToShow();
+				}
+			}
+		}
+		this.shown+=12;
 	};
 
 	noMoreToShow = () => {
