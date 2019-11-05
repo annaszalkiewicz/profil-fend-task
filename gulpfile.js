@@ -10,7 +10,10 @@ function serve() {
 		server: {
 			baseDir: './'
 		},
-		port: 8002
+		port: 8000,
+		ui: {
+			port: 8001
+		}
 	});
 }
 
