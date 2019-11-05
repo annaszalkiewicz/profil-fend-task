@@ -140,16 +140,8 @@ class View {
 			this.render(result);
 		}
 		this.shown = 12;
-
 		this.changeFooterPosition();
 	};
-	// showResults = () => {
-
-	// if (this.filtered.length > 0) {
-	// 	this.filtered.map(result => this.render(result));
-	// } else {
-
-	// };
 
 	noMoreToShow = () => {
 		const nomore = document.getElementById('results_nomore');
@@ -207,18 +199,16 @@ class View {
 				return (this.filtered = this.results);
 			}
 		});
-
 	};
 
 	// Filter by release date
 	filterByDate = value => {
 		this.filtered.filter(result => {
 			const d = new Date(result.releaseDate);
-			
+
 			if (d.getFullYear().toString() === value) {
 				this.filteredByDate = [...this.filteredByDate, result];
-			}
-			else if (value === '') {
+			} else if (value === '') {
 				this.filteredByDate = this.filtered;
 			}
 		});

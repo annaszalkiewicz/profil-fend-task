@@ -27,7 +27,7 @@ class Controller {
 		this.view.scrollToTop();
 		this.view.setStickySidebar();
 		//Detect if user is at the ottom of the page
-		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+		if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight && this.view.filteredByDate.length === 0) {
 			this.loadMoreResults();
 		}
 	};
@@ -135,12 +135,15 @@ class Controller {
 		e.preventDefault();
 		this.view.filterByRating(this.filterRating.value);
 		this.view.filterByDate(this.filterDate.value);
-		// this.sortChangeHandler(this.sort.value);
-		// this.view.showFiltered();
+		this.sortChangeHandler(this.sort.value);
+		this.view.showFiltered();
 	};
 
 	/* This method handles changing sort types depending on event target value and calls proper method to sort search results */
 	sortChangeHandler = value => {
+		if (value === '') {
+			return;
+		}
 		switch (value) {
 			case 'za':
 				this.view.sortByName();
