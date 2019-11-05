@@ -208,26 +208,20 @@ class View {
 			}
 		});
 
-		console.log(this.filtered);
 	};
 
-	/* This method filters results by release date.
-	1) It clears filtered array and show all results
-	2) Get release date shortened to year from results array and convert it to string
-	3) Compare result release date with value from input
-	4) Add items to filtered array if it matches condition
-	5) It displays filtered results.
-	*/
+	// Filter by release date
 	filterByDate = value => {
 		this.filtered.filter(result => {
-			if (value === '') {
+			const d = new Date(result.releaseDate);
+			
+			if (d.getFullYear().toString() === value) {
+				this.filteredByDate = [...this.filteredByDate, result];
+			}
+			else if (value === '') {
 				this.filteredByDate = this.filtered;
 			}
-			if (new Date(result.releaseDate).getFullYear().toString() === value) {
-				return (this.filteredByDate = [...this.filteredByDate, result]);
-			}
 		});
-		console.log(this.filteredByDate);
 	};
 
 	sortByName = () => {
