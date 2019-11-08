@@ -8,11 +8,11 @@ const sourcemaps = require('gulp-sourcemaps');
 function serve() {
 	bs.init({
 		server: {
-			baseDir: './'
+			baseDir: './build'
 		},
-		port: 8000,
+		port: 8002,
 		ui: {
-			port: 8001
+			port: 8003
 		}
 	});
 }
@@ -33,7 +33,23 @@ function scripts() {
 }
 
 function defaultTask() {
-	serve();
+	bs.init({
+		server: {
+			baseDir: './'
+		},
+		port: 8000,
+		ui: {
+			port: 8001
+		}
+	});	bs.init({
+		server: {
+			baseDir: './'
+		},
+		port: 8000,
+		ui: {
+			port: 8001
+		}
+	});
 	scripts();
 	gulp.watch('./scss/**/*.scss', style);
 	gulp.watch('./*.html').on('change', bs.reload);
