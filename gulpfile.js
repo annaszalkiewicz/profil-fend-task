@@ -1,9 +1,11 @@
 const gulp = require('gulp');
+const { series } = require('gulp');
 const bs = require('browser-sync').create();
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
 
 function serve() {
 	bs.init({
@@ -32,6 +34,16 @@ function scripts() {
 	return gulp.src(['./js/app.mjs']).pipe(gulp.dest('./js'));
 }
 
+function runBabel() {
+	return gulp
+		.src('./js/**/*.mjs')
+		.pipe(sourcemaps.init())
+		.pipe(babel())
+		.pipe(concat('index.js'))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('build'));
+}
+
 function defaultTask() {
 	bs.init({
 		server: {
@@ -41,7 +53,8 @@ function defaultTask() {
 		ui: {
 			port: 8001
 		}
-	});	bs.init({
+	});
+	bs.init({
 		server: {
 			baseDir: './'
 		},
@@ -67,6 +80,11 @@ function autoprefix() {
 		)
 		.pipe(gulp.dest('build'));
 }
+
+function copy() {
+	return gulp.src('./img/*').pipe(gulp.dest('build/img'));
+}
+exports.build = series(copy, runBabel);
 
 exports.serve = serve;
 exports.style = style;
